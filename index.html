@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html
+  b:css="false"
+  b:js="false"
+  b:defaultwidgetversion="2"
+  b:layoutsVersion="3"
+  expr:dir="data:blog.languageDirection"
+  expr:lang="data:blog.locale"
+  b:templateUrl="rockpool.xml"
+>
+  <b:attr name="xmlns" value="" />
+  <b:attr name="xmlns:b" value="" />
+  <b:attr name="xmlns:data" value="" />
+  <b:attr name="xmlns:expr" value="" />
+  <head>
+    <meta expr:charset="data:blog.encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Titulo principal del Blog o website -->
+    <title><data:view.title.escaped /></title>
+    <meta expr:content="data:view.description.escaped" name="description" />
+    <link expr:href="data:view.url.canonical" rel="canonical" />
+    <link
+      expr:href="data:blog.blogspotFaviconUrl"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link href="https://blogger.googleusercontent.com" rel="preconnect" />
+    <!-- <link rel="stylesheet" href="css/main.css" /> -->
+    <!-- <b:if cond='data:view.isLayoutMode'><b:skin><![CDATA[]]></b:skin><style>/*<![CDATA[*//*]]>*/</style></b:if> -->
+
+    <!-- <b:skin><![CDATA[]]></b:skin> -->
+    <b:skin><![CDATA[]]></b:skin>
+
+    <b:defaultmarkups>
+      <b:defaultmarkup type="All">
+        <b:includable id="main" />
+        <b:includable id="content" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="AdSense,Blog">
+        <b:includable id="defaultAdUnit" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Blog,PopularPosts,FeaturedPost">
+        <b:includable id="blogThisShare" />
+        <b:includable id="bylineByName" />
+        <b:includable id="bylineRegion" />
+        <b:includable id="commentsLink" />
+        <b:includable id="commentsLinkIframe" />
+        <b:includable id="emailPostIcon" />
+        <b:includable id="facebookShare" />
+        <b:includable id="footerBylines" />
+        <b:includable id="headerByline" />
+        <b:includable id="googlePlusShare" />
+        <b:includable id="linkShare" />
+        <b:includable id="otherSharingButton" />
+        <b:includable id="platformShare" />
+        <b:includable id="postAuthor" />
+        <b:includable id="postCommentsLink" />
+        <b:includable id="postJumpLink" />
+        <b:includable id="postLabels" />
+        <b:includable id="postLocation" />
+        <b:includable id="postReactions" />
+        <b:includable id="postShareButtons" />
+        <b:includable id="postTimestamp" />
+        <b:includable id="sharingButton" />
+        <b:includable id="sharingButtonContent" />
+        <b:includable id="sharingButtons" />
+        <b:includable id="sharingButtonsMenu" />
+        <b:includable id="sharingPlatformIcon" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="PopularPosts,FeaturedPost">
+        <b:includable id="snippetedPostByline" />
+        <b:includable id="snippetedPostContent" />
+        <b:includable id="snippetedPosts" />
+        <b:includable id="snippetedPostThumbnail" />
+        <b:includable id="snippetedPostTitle" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Blog">
+        <b:includable id="aboutPostAuthor" />
+        <b:includable id="addComments" />
+        <b:includable id="commentAuthorAvatar" />
+        <b:includable id="commentDeleteIcon" />
+        <b:includable id="commentForm" />
+        <b:includable id="commentFormIframeSrc" />
+        <b:includable id="commentItem" />
+        <b:includable id="commentList" />
+        <b:includable id="commentPicker" />
+        <b:includable id="comments" />
+        <b:includable id="commentsTitle" />
+        <b:includable id="feedLinks" />
+        <b:includable id="feedLinksBody" />
+        <b:includable id="homePageLink" />
+        <b:includable id="iframeComments" />
+        <b:includable id="inlineAd" />
+        <b:includable id="manageComments" />
+        <b:includable id="nextPageLink" />
+        <b:includable id="post" />
+        <b:includable id="postBody" />
+        <b:includable id="postBodySnippet" />
+        <b:includable id="postCommentsAndAd" />
+        <b:includable id="postFooter" />
+        <b:includable id="postFooterAuthorProfile" />
+        <b:includable id="postHeader" />
+        <b:includable id="postMeta" />
+        <b:includable id="postMetadataJSONImage" />
+        <b:includable id="postMetadataJSONPublisher" />
+        <b:includable id="postPagination" />
+        <b:includable id="postTitle" />
+        <b:includable id="previousPageLink" />
+        <b:includable id="threadedCommentForm" />
+        <b:includable id="threadedCommentJs" />
+        <b:includable id="threadedComments" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="BlogArchive">
+        <b:includable id="flat" />
+        <b:includable id="hierarchy" />
+        <b:includable id="interval" />
+        <b:includable id="posts" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="BlogSearch">
+        <b:includable id="searchForm" />
+        <b:includable id="searchSubmit" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Header">
+        <b:includable id="behindImageStyle" />
+        <b:includable id="description" />
+        <b:includable id="image" />
+        <b:includable id="title" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Label">
+        <b:includable id="cloud" />
+        <b:includable id="list" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="PageList">
+        <b:includable id="overflowButton" />
+        <b:includable id="overflowablePageList" />
+        <b:includable id="pageLink" />
+        <b:includable id="pageList" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Profile">
+        <b:includable id="authorProfileImage" />
+        <b:includable id="defaultProfileImage" />
+        <b:includable id="profileImage" />
+        <b:includable id="teamProfile" />
+        <b:includable id="teamProfileLink" />
+        <b:includable id="userGoogleProfile" />
+        <b:includable id="userLocation" />
+        <b:includable id="userProfile" />
+        <b:includable id="userProfileData" />
+        <b:includable id="userProfileImage" />
+        <b:includable id="userProfileInfo" />
+        <b:includable id="userProfileLink" />
+        <b:includable id="userProfileText" />
+        <b:includable id="viewProfileLink" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Subscribe">
+        <b:includable id="feeds" />
+      </b:defaultmarkup>
+      <b:defaultmarkup type="Common">
+        <!-- Newest post -->
+        <b:includable id="newest:post">
+          <article class="newest__post">
+            <img
+              expr:src="data:post.featuredImage resizeImage 200"
+              expr:alt="data:post.title"
+              class="newest__post__image"
+            />
+            <div class="newest__post__content">
+              <header class="newest__post__header">
+                <h2 class="newest__post__title">
+                  <a expr:href="data:post.url"><data:post.title /></a>
+                </h2>
+                <time class="newest__post__date post__time"
+                  ><b:include
+                    name="@meteor"
+                    data='{ icon: "Calendar"}' /><data:post.date
+                /></time>
+              </header>
+              <p><b:eval expr="data:post.snippets.short" /></p>
+              <footer class="newest__post__footer">
+                <span class="newest__post__labels">
+                  <span class="newest__post__label"
+                    ><a expr:href="data:post.labels.first.url"
+                      ><b:include
+                        name="@meteor"
+                        data="{ icon: data:post.labels.first.name }" /></a
+                  ></span>
+                  <span class="newest__post__label"
+                    ><a expr:href="data:post.labels.last.url"
+                      ><b:include
+                        name="@meteor"
+                        data="{ icon: data:post.labels.last.name }" /></a
+                  ></span>
+                </span>
+                <span class="newest__post__readmore">
+                  <a expr:href="data:post.url"
+                    ><b:include name="@meteor" data='{ icon: "Posts"}' /> Leer
+                    Publicación</a
+                  >
+                </span>
+              </footer>
+            </div>
+          </article>
+        </b:includable>
+
+        <!-- Label Section -->
+        <b:includable id="label:section">
+          <b:with value='data:labelName ?: "No label"' var="labelName">
+            <section expr:class='"main__section " + data:labelName'>
+              <b:include name="post:loop" />
+              <div class="label__nav">
+                <b:tag
+                  expr:href='data:blog.searchUrl + "/label/" + data:labelName'
+                  name="a"
+                >
+                  Ver todas →
+                </b:tag>
+              </div>
+            </section>
+          </b:with>
+        </b:includable>
+
+        <!-- Post Body -->
+        <b:includable id="post:body">
+          <article class="article" id="article">
+            <header>
+              <b:include name="post:header" />
+              <b:include name="breadcrumb" />
+            </header>
+            <data:post.body />
+          </article>
+        </b:includable>
+
+        <!-- Posts loop -->
+        <b:includable id="post:loop">
+          <b:loop values="data:posts" index="i" var="post">
+            <b:if
+              cond="(data:post.labels.first.name == data:labelName) or (data:post.labels.last.name == data:labelName) "
+            >
+              <article
+                expr:class='"post " + data:post.labels.first.name'
+                expr:style='"background-image: url(" + data:post.featuredImage resizeImage 300 + ")"'
+              >
+                <span
+                  class="post__meta"
+                  expr:title='"Etiqueta " + data:post.labels.first.name'
+                >
+                  <span class="post__tag"
+                    ><a expr:href="data:post.labels.first.url"
+                      ><b:include
+                        name="@meteor"
+                        data="{ icon: data:post.labels.first.name}" /></a
+                  ></span>
+                  <time class="post__time"
+                    ><b:include
+                      name="@meteor"
+                      data='{ icon: "Calendar"}' /><data:post.date
+                  /></time>
+                </span>
+                <h3 class="post__title" expr:title="data:post.title">
+                  <a expr:href="data:post.url"><data:post.title /></a>
+                </h3>
+              </article>
+            </b:if>
+          </b:loop>
+        </b:includable>
+
+        <b:includable id="post:loopBySearch">
+          <b:if cond="data:posts.first.title">
+            <h2 class="main__title">
+              <b:include name="@meteor" data='{ icon: "Posts"}' /> Publicaciones
+              recientes y/o actualizadas hace poco
+            </h2>
+            <b:else />
+            <h2 class="main__title">
+              Al parecer no se encontró nada relacionado...
+            </h2>
+          </b:if>
+          <section class="main__section">
+            <b:loop values="data:posts" index="i" var="post">
+              <article
+                class="post"
+                expr:style='"background-image: url(" + data:post.featuredImage resizeImage 300 + ")"'
+              >
+                <span
+                  class="post__meta"
+                  expr:title='"Etiqueta " + data:post.labels.first.name'
+                >
+                  <span class="post__tag"
+                    ><a expr:href="data:post.labels.first.url"
+                      ><b:include
+                        name="@meteor"
+                        data="{ icon: data:post.labels.first.name}" /></a
+                  ></span>
+                  <time class="post__time"
+                    ><b:include
+                      name="@meteor"
+                      data='{ icon: "Calendar"}' /><data:post.date
+                  /></time>
+                </span>
+                <h3 class="post__title" expr:title="data:post.title">
+                  <a expr:href="data:post.url"><data:post.title /></a>
+                </h3>
+              </article>
+            </b:loop>
+          </section>
+          <b:include name="next:prev" />
+        </b:includable>
+
+        <!-- Paginacion -->
+        <b:includable id="next:prev">
+          <nav class="posts__nav">
+            <b:if cond="data:newerPageUrl">
+              <a
+                class="posts__nav--link old"
+                expr:href="data:newerPageUrl"
+                expr:title="data:newerPageTitle"
+                rel="next"
+                >← Anterior</a
+              >
+              <b:else />
+              <span class="posts__nav--link disabled"></span>
+            </b:if>
+            <a class="posts__nav--link" expr:href="data:blog.homepageUrl"
+              >Inicio</a
+            >
+            <b:if cond="data:olderPageUrl">
+              <a
+                class="posts__nav--link new"
+                expr:href="data:olderPageUrl"
+                expr:title="data:olderPageTitle"
+                rel="prev"
+                >Siguiente →</a
+              >
+              <b:else />
+              <span class="posts__nav--link disabled"></span>
+            </b:if>
+          </nav>
+        </b:includable>
+
+        <!-- Post pagination -->
+        <b:includable id="post:pagination">
+          <data:items.last.url />
+          <b:tag
+            class="previous-next"
+            cond="data:newerPageUrl or data:olderPageUrl"
+            name="section"
+          >
+            <b:if cond="data:olderPageUrl">
+              <a
+                id="old"
+                class="pager-button"
+                expr:href="data:olderPageUrl"
+                expr:aria-label="data:messages.olderPosts"
+                rel="nofollow"
+              >
+              </a>
+            </b:if>
+            <b:if cond="data:newerPageUrl">
+              <a
+                id="new"
+                class="pager-button"
+                expr:href="data:newerPageUrl"
+                expr:aria-label="data:messages.newerPosts"
+                rel="nofollow"
+              >
+              </a>
+            </b:if>
+            <script type="text/javascript">
+              // Función para obtener el título de una página a partir de su URL
+              const newerPageTitle = document.getElementById("new"),
+                olderPageTitle = document.getElementById("old");
+
+              function getTitleFromUrl(url, element) {
+                // Realizar una solicitud HTTP a la URL
+                fetch(url)
+                  .then((response) => {
+                    // Verificar si la solicitud fue exitosa
+                    if (!response.ok) {
+                      throw new Error("La solicitud HTTP falló");
+                    }
+                    // Devolver el cuerpo de la respuesta como texto
+                    return response.text();
+                  })
+                  .then((html) => {
+                    // Crear un elemento temporal para contener el HTML de la página
+                    let el = document.createElement("div"),
+                        header = document.createElement("h2"),
+                        p  = document.createElement("p");
+
+                    el.innerHTML = html;
+
+                    if (element.id === "new") {
+                      p.textContent = "Siguiente Publicación";
+                      header.textContent = el.querySelector("title").textContent;
+
+                      newerPageTitle.appendChild(p)
+                      newerPageTitle.appendChild(header)
+
+                    } else {
+
+                      p.textContent = "Publicación Anterior";
+                      header.textContent = el.querySelector("title").textContent;
+
+                      olderPageTitle.appendChild(p)
+                      olderPageTitle.appendChild(header)
+                    }
+                  })
+                  .catch((error) => {
+                    // Manejar errores de la solicitud HTTP
+                    console.error("Error:", error);
+                  });
+              }
+
+              if (newerPageTitle &amp;&amp; olderPageTitle) {
+                // Obtener el título del post más reciente
+                let newerPageUrl = `<data:newerPageUrl/>`;
+                getTitleFromUrl(newerPageUrl, newerPageTitle);
+
+                let olderPageUrl = `<data:olderPageUrl/>`;
+                getTitleFromUrl(olderPageUrl, olderPageTitle);
+              } else if (newerPageTitle) {
+                let newerPageUrl = `<data:newerPageUrl/>`;
+                getTitleFromUrl(newerPageUrl, newerPageTitle);
+              } else if (olderPageTitle) {
+                let olderPageUrl = `<data:olderPageUrl/>`;
+                getTitleFromUrl(olderPageUrl, olderPageTitle);
+              }
+            </script>
+          </b:tag>
+        </b:includable>
+
+        <!-- Breadcrumb -->
+        <b:includable id="breadcrumb">
+          <nav aria-label="Breadcrumb" role="navigation" class="breadcrumbs">
+            <ol
+              itemtype="http://schema.org/BreadcrumbList"
+              class="breadcrumb__list"
+            >
+              <li
+                class="breadcrumb__item"
+                itemprop="itemListElement"
+                itemtype="http://schema.org/ListItem"
+              >
+                <a href="/" itemprop="item" class="breadcrumb__link"
+                  ><span itemprop="name">Home</span></a
+                >
+                <meta itemprop="position" content="1" />
+              </li>
+              <span class="breadcrumb__separator">›</span>
+              <b:if cond="data:post.labels">
+                <li
+                  class="breadcrumb__item"
+                  itemprop="itemListElement"
+                  itemtype="http://schema.org/ListItem"
+                >
+                  <b:with value="data:post.labels.first" var="label">
+                    <a expr:href="data:label.url" itemprop="item">
+                      <span itemprop="name"><data:label.name /></span>
+                    </a>
+                  </b:with>
+                  <meta itemprop="position" content="2" />
+                </li>
+                <span class="breadcrumb__separator">›</span>
+              </b:if>
+              <li
+                class="breadcrumb__item"
+                itemprop="itemListElement"
+                itemtype="http://schema.org/ListItem"
+              >
+                <span itemprop="headline"><data:post.title /></span>
+                <meta itemprop="position" content="3" />
+              </li>
+            </ol>
+          </nav>
+        </b:includable>
+
+        <!-- Post author and date -->
+        <b:includable id="post:header">
+          <div class="post__profile">
+            <img
+              expr:src="data:post.author.authorPhoto.image resizeImage 33"
+              expr:alt='"Foto del author " + data:post.author.name'
+              class="post__profile--img"
+            />
+            <a expr:href="data:post.author.profileUrl" class="profile--name"
+              ><data:post.author.name
+            /></a>
+            <time class="post__time"
+              ><b:include
+                data='{ icon: "Calendar"}'
+                name="@meteor" /><data:post.date
+            /></time>
+          </div>
+        </b:includable>
+
+        <b:includable id="@avatar">
+          <b:if cond="data:src">
+            <b:with
+              value='data:default ?: "https://lh3.googleusercontent.com/a/default-user"'
+              var="default"
+            >
+              <b:with
+                value='resizeImage((data:src contains "/img/bl" ? data:default : data:src), (data:resize ?: 40), "1:1")'
+                var="avatar"
+              >
+                <b:tag
+                  expr:alt="data:alt ?: data:messages.image"
+                  expr:src="data:avatar"
+                  name="img"
+                >
+                  <b:attr name="b:whitespace" value="remove" />
+                  <b:attr name="width" expr:value="data:avatar.width" />
+                  <b:attr name="height" expr:value="data:avatar.height" />
+                  <b:attr name="loading" expr:value="data:loading" />
+                  <b:class cond="data:class" expr:name="data:class" />
+                </b:tag>
+              </b:with>
+            </b:with>
+            <b:else />
+            <b:comment render="true">Parameter [src] is required.</b:comment>
+          </b:if>
+        </b:includable>
+
+        <!-- Meteor Icons by zkreations -->
+        <b:includable id="@meteor">
+          <svg expr:class='"i i-" + data:icon' viewBox="0 0 24 24">
+            <b:class cond="data:class" expr:name="data:class" />
+            <b:attr
+              cond="data:viewbox"
+              expr:value="data:viewbox"
+              name="viewBox"
+            />
+            <b:attr expr:value="data:fill" name="fill" />
+            <b:attr expr:value="data:width" name="width" />
+            <b:attr expr:value="data:height" name="height" />
+            <b:switch var="data:icon">
+              <b:case value="Blogger" /><path
+                d="M8 15h8M8 9h4m7 0q-1 0-1-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6v-5a2 2 0 0 0-2-2Z"
+              />
+              <b:case value="Calendar" /><rect
+                width="18"
+                height="17"
+                x="3"
+                y="5"
+                rx="2"
+              ></rect
+              ><path d="M7 2v3m10-3v3M3 10h18"></path>
+              <b:case value="CSS" /><path
+                d="m3.6 0-.9 4h16.4l-.4 2.7H2.3l-.9 4h16.4l-.9 4.6-6.5 2.2-5.8-2.2.4-2H1l-1 4.8 9.5 3.7 10.9-3.7L24 0H3.6Z"
+              />
+              <b:case value="Clock" /><circle cx="12" cy="12" r="10"></circle
+              ><path d="M12 7v5l3 3"></path> <b:case value="Delete" /><path
+                d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m2 0 2-4h6l2 4m-7 5v6m4-6v6"
+              ></path>
+              <b:case value="Comment" /><path
+                d="M4.3 16.7a9 9 0 1 1 3 3L3 21z"
+              ></path>
+              <b:case value="HTML" /><path
+                fill-rule="evenodd"
+                d="M17.3 7.2H7l.2 2.4H17c0 2.2-.6 6.6-.7 8.6l-5.5 1.6-5.5-2-.5-4.6h2.6l.3 2.4 3.1 1.2 3-1 .4-3.8H4.8L4 4.8h13.5c0 .8 0 1.6-.2 2.4ZM0 0l2 21.7 8.8 2.3 8.9-2.3L21.6 0H0Z"
+              />
+              <b:case value="JavaScript" /><path
+                d="M15.3 18.4c-1.7 0-2.8-.8-3.4-1.9l1.5-.9c.4.7 1 1.2 1.9 1.2.8 0 1.3-.4 1.3-1 0-.8-1.1-1-1.9-1.4-1.3-.6-2.2-1.3-2.2-2.8 0-1.5 1-2.5 2.7-2.5 1.2 0 2 .4 2.7 1.5l-1.5 1c-.3-.7-.6-.9-1.2-.9-.5 0-.9.4-.9.8 0 .6.4.8 1.2 1.2 1.7.7 3 1.3 3 3.1 0 1.7-1.4 2.6-3.2 2.6ZM11 15.6c0 2-1.2 3-2.9 3-1.5 0-2.4-.6-2.8-1.6l1.5-1c.3.5.6.8 1.2.8s1-.3 1-1.2V9h2v6.6ZM0 20h20V0H0v20Z"
+              />
+              <b:case value="Posts" /><path
+                d="M2 6v13a2 2 0 0 0 4 0V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H4m7-13h6m-6 4h6m-6 4h6"
+              ></path>
+              <b:case value="Section" /><path
+                d="M24 0v24H0V0h24ZM12.6 23.3h-.2v.5h.2v-.5Zm.3-.2-.2.1v.5l.2.1v-.6Zm-.8 0v.7h.2v-.5l-.2-.2Z"
+              />
+              <path
+                fill="currentColor"
+                d="M7 13c1 0 2 .8 2 1.9V18c0 1-.8 2-1.9 2H4c-1 0-2-.8-2-1.9V15c0-1 .8-2 1.9-2H7Zm9 4a1 1 0 0 1 .1 2H12a1 1 0 0 1-.1-2H16Zm4-4a1 1 0 1 1 0 2h-8a1 1 0 1 1 0-2h8ZM7 3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3Zm9 4a1 1 0 0 1 .1 2H12a1 1 0 0 1-.1-2H16Zm4-4a1 1 0 0 1 .1 2H12a1 1 0 0 1-.1-2H20Z"
+              />
+              <b:case value="Search" /><circle cx="10" cy="10" r="7"></circle
+              ><path d="m15 15 6 6"></path> <b:case value="Arrow" /><path
+                d="M14 9 9 4 4 9m16 11h-7a4 4 0 0 1-4-4V4"
+              ></path>
+              <b:default /><b:attr
+                expr:value="data:icon"
+                name="data-i"
+              /><circle cx="12" cy="12" r="10" />
+            </b:switch>
+          </svg>
+        </b:includable>
+
+        <b:includable id="sidebar:toc">
+          <div class="sidebar__container">
+            <aside class="toc">
+              <nav>
+                <section class="toc_content">
+                  <header>
+                    <h2 class="toc__title">Temario de la publicación</h2>
+                  </header>
+                  <ul id="toc__list"></ul>
+                </section>
+              </nav>
+            </aside>
+          </div>
+        </b:includable>
+
+        <!-- Comentarios -->
+        <b:includable id="comment:form">
+          <div class="comments-editor">
+            <b:if cond="data:post.allowNewComments">
+              <div id="comment-form">
+                <div class="comment-iframe">
+                  <iframe
+                    id="comment-editor"
+                    expr:src='data:post.commentFormIframeSrc params { skin: "notable" }'
+                    height="66"
+                  />
+                </div>
+              </div>
+              <b:if cond="data:this.messages.blogComment">
+                <div class="comment-messages">
+                  <data:this.messages.blogComment />
+                </div>
+              </b:if>
+              <textarea id="form-script">
+              <data:post.cmtfpIframe/>
+            </textarea
+              >
+              <button id="form-restore" class="comment-restore-button">
+                <b:include name="@meteor" data='{ icon: "Comment" }' /> Agrega
+                un comentario...
+              </button>
+              <script>
+                /*<![CDATA[*/
+                !(function () {
+                  "use strict";
+                  const e = document.getElementById("comment-form"),
+                    r = document.getElementById("form-script"),
+                    t = document.getElementById("form-restore"),
+                    n = document.querySelectorAll("[data-parent-id]"),
+                    c = "is-active",
+                    o = "is-replying",
+                    s = "has-reply-form";
+                  function i(e) {
+                    if (!e) return;
+                    const r = e.value.replace(
+                      /<script.*?src='(.*?)'.*?><\/script>/,
+                      "$1"
+                    );
+                    e.remove(),
+                      ((e) =>
+                        new Promise((r, t) => {
+                          const n = document.createElement("script");
+                          (n.src = e),
+                            (n.onload = r),
+                            (n.onerror = t),
+                            document.head.appendChild(n);
+                        }))(r)
+                        .then(() =>
+                          BLOG_CMT_createIframe(
+                            "https://www.blogger.com/rpc_relay.html"
+                          )
+                        )
+                        .catch((e) => console.error(e));
+                  }
+                  function m(e, r) {
+                    if (!e) return;
+                    const t = e.match(/<iframe[^>]*\s+src="([^"]*)"/i)[1];
+                    return { originalSrc: t, form: r ? e.replace(t, r) : e };
+                  }
+                  ((n) => {
+                    var a, l, d;
+                    if (
+                      ((a = r),
+                      (l = () => {
+                        i(r);
+                      }),
+                      (d = { rootMargin: "200px" }),
+                      new IntersectionObserver(
+                        (e, r) => {
+                          e.forEach((e) => {
+                            e.isIntersecting && (l(), r.unobserve(e.target));
+                          });
+                        },
+                        { ...d }
+                      ).observe(a),
+                      !n)
+                    )
+                      return;
+                    const u = e.innerHTML,
+                      { originalSrc: f, form: p } = m(u),
+                      v = document.createElement("div");
+                    let g;
+                    (v.id = "reply-form"),
+                      n.forEach((r) => {
+                        r.onclick = () => {
+                          const n = r.dataset.parentId,
+                            i = document.querySelector(
+                              `#c${n} .comments-replies`
+                            ),
+                            a = document.getElementById("reply-form");
+                          if (g === r) return;
+                          a
+                            ? (a.parentElement.classList.remove(s), a.remove())
+                            : ((e.innerHTML = ""), t.classList.add(o)),
+                            g && g.classList.remove(c);
+                          const l = `${f}&parentID=${n}`,
+                            { form: d } = m(u, l);
+                          r.classList.add(c),
+                            (g = r),
+                            (v.innerHTML = d),
+                            i.classList.add(s),
+                            i.insertAdjacentElement("afterbegin", v);
+                        };
+                      }),
+                      t &&
+                        (t.onclick = () => {
+                          if (g) {
+                            const r = document.getElementById("reply-form");
+                            t.classList.remove(o),
+                              (e.innerHTML = p),
+                              g.classList.remove(c),
+                              (g = null),
+                              r.parentElement.classList.remove(s),
+                              r.remove();
+                          }
+                        });
+                  })(n);
+                })();
+                /*]]>*/
+              </script>
+              <b:else />
+              <div class="comment-alert">
+                <data:post.noNewCommentsText />
+              </div>
+            </b:if>
+          </div>
+        </b:includable>
+        <b:includable id="comment:header">
+          <div class="comment-avatar">
+            <b:include
+              name="@avatar"
+              data="{ src: data:comment.authorAvatarSrc, default: data:avatar }"
+            />
+          </div>
+        </b:includable>
+        <b:includable id="comment:body">
+          <div class="comment-content">
+            <b:class cond="data:comment.isDeleted" name="comment-deleted" />
+            <div class="comment-meta">
+              <b:tag
+                class="comment-author"
+                expr:name='data:comment.authorUrl ? "a" : "span"'
+              >
+                <b:attr name="href" expr:value="data:comment.authorUrl" />
+                <data:comment.author />
+                <b:if cond="data:comment.extraIconClass">
+                  <span class="comment-badge">
+                    <svg class="i i-circle-check" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="m8.5 12.5 2 2 5-5" />
+                    </svg>
+                  </span>
+                </b:if>
+              </b:tag>
+              <time class="comment-time">
+                <data:comment.timestamp />
+              </time>
+            </div>
+            <p><data:comment.body /></p>
+          </div>
+        </b:includable>
+        <b:includable id="comment:footer">
+          <div class="comment-footer">
+            <b:if cond="data:hasDepth">
+              <button
+                class="comment-reply-button"
+                expr:data-parent-id="data:comment.id"
+              >
+                <!-- <b:eval expr="data:texts.reply ?: data:messages.postAComment" /> -->
+                <b:include name="@meteor" data='{ icon: "Arrow"}' /> Responder
+              </button>
+            </b:if>
+            <span expr:class="data:comment.adminClass">
+              <a
+                class="comment-delete-button"
+                expr:href="data:comment.deleteUrl"
+              >
+                <!-- <b:eval expr="data:texts.delete ?: data:messages.deleteComment" /> -->
+                <b:include name="@meteor" data='{ icon: "Delete" }' /> Eliminar
+              </a>
+            </span>
+          </div>
+        </b:includable>
+        <b:includable id="comment:pagination">
+          <div class="comments-paging">
+            <b:if cond="data:post.hasOlderLinks">
+              <a expr:href="data:post.oldestLinkUrl"
+                ><data:messages.oldest
+              /></a>
+              <a expr:href="data:post.olderLinkUrl"><data:messages.older /></a>
+            </b:if>
+            <data:post.commentRangeText />
+            <b:if cond="data:post.hasNewerLinks">
+              <a expr:href="data:post.newerLinkUrl"><data:messages.newer /></a>
+              <a expr:href="data:post.newestLinkUrl"
+                ><data:messages.newest
+              /></a>
+            </b:if>
+          </div>
+        </b:includable>
+        <b:includable id="comment:item" var="comment">
+          <b:with value="(data:currentDepth ?: -1) + 1" var="currentDepth">
+            <b:with
+              value="(data:depth gt 0) and (data:currentDepth lt data:depth)"
+              var="hasDepth"
+            >
+              <div class="comment" expr:id='"c" + data:comment.id'>
+                <div class="comment-block">
+                  <b:include name="comment:header" />
+                  <b:include name="comment:body" />
+                  <b:include
+                    cond="data:post.allowNewComments"
+                    name="comment:footer"
+                  />
+                  <b:if cond="data:hasDepth">
+                    <b:with
+                      value="data:post.comments where (c => c.inReplyTo == data:comment.id)"
+                      var="replies"
+                    >
+                      <div class="comments-replies">
+                        <b:if cond="data:replies.any">
+                          <b:class name="has-replies" />
+                          <b:loop
+                            expr:reverse="data:reverse"
+                            values="data:replies"
+                            var="reply"
+                          >
+                            <b:include name="comment:item" data="reply" />
+                          </b:loop>
+                        </b:if>
+                      </div>
+                    </b:with>
+                  </b:if>
+                </div>
+              </div>
+            </b:with>
+          </b:with>
+        </b:includable>
+        <b:includable id="comment:build">
+          <b:with value="{ min: (data:depth ?: 1), max: 5 }" var="depths">
+            <b:with
+              value="(data:depths.min >= data:depths.max) ? data:depths.max : data:depths.min"
+              var="depth"
+            >
+              <b:with
+                value="data:post.comments where (c => (data:depth == 0 ? c.id : !c.inReplyTo))"
+                var="comments"
+              >
+                <b:if cond="data:comments.any">
+                  <div class="comments-content">
+                    <b:loop
+                      expr:reverse="data:reverse"
+                      values="data:comments"
+                      var="comment"
+                    >
+                      <b:include name="comment:item" data="comment" />
+                    </b:loop>
+                  </div>
+                </b:if>
+              </b:with>
+            </b:with>
+          </b:with>
+        </b:includable>
+        <b:includable id="comment:main">
+          <section class="comments">
+            <b:if cond="not data:view.isPreview and data:post.allowComments">
+              <h2 class="comments-title">
+                ←
+                <b:message name="messages.numberOfComments">
+                  <b:param
+                    expr:value="data:post.numberOfComments"
+                    name="numComments"
+                  />
+                </b:message>
+                →
+              </h2>
+              <div class="comments" id="comments">
+                <b:loop
+                  reverse="data:order"
+                  values='["build","form"]'
+                  var="include"
+                >
+                  <b:include expr:name='"comment:" + data:include' />
+                </b:loop>
+                <b:include
+                  cond="data:post.commentPagingRequired"
+                  name="comment:pagination"
+                />
+              </div>
+            </b:if>
+          </section>
+        </b:includable>
+      </b:defaultmarkup>
+    </b:defaultmarkups>
+  </head>
+
+  <body>
+    <!-- Custom classes for each view -->
+    <b:class cond="data:view.isPreview" name="preview" />
+    <b:class cond="data:view.isSingleItem" name="item__view" />
+    <b:class cond="data:view.isArchive" name="archive__view" />
+    <b:class cond="data:view.isLabelSearch" name="label__view" />
+    <b:class
+      cond="data:view.isSearch and !data:view.isLabelSearch"
+      name="search-view"
+    />
+
+    <!-- Menu de Navegacion -->
+    <div class="nav__wrapper">
+      <nav class="nav">
+        <div class="nav__home">
+          <b:if cond="data:blog.url == data:blog.homepageUrl">
+            <span class="nav__link home--active true">Home</span>
+            <b:else />
+            <a href="/" class="nav__link home">Home</a>
+          </b:if>
+        </div>
+
+        <!-- Lista de enlaces -->
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a
+              expr:href='(data:view.search.label != "Blogger") ? "/search/label/Blogger" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "Blogger")'
+              >Blogger</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              expr:href='(data:view.search.label != "JavaScript") ? "/search/label/JavaScript" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "JavaScript")'
+              >JavaScript</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              expr:href='(data:view.search.label != "CSS") ? "/search/label/CSS" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "CSS")'
+              >CSS</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              expr:href='(data:view.search.label != "HTML") ? "/search/label/HTML" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "HTML")'
+              >HTML</a
+            >
+          </li>
+        </ul>
+
+        <!-- Formulario de busqueda -->
+        <div class="nav__search">
+          <form
+            class="nav__search--form"
+            expr:action="data:blog.searchUrl"
+            role="search"
+          >
+            <label class="search__label">
+              <input
+                autocomplete="on"
+                class="search__input"
+                placeholder=" ¿Buscas algo en particular?"
+                name="q"
+                type="search"
+              />
+              <svg class="i i-search" viewBox="0 0 24 24">
+                <circle cx="10" cy="10" r="7"></circle>
+                <path d="m15 15 6 6"></path>
+              </svg>
+            </label>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="header">
+      <div class="header-inner">
+        <b:if cond="data:view.isError">
+          <h1 class="header__title">Pagina No Encontrada</h1>
+          <b:elseif cond="data:view.isLabelSearch" />
+          <h1 class="header__title">
+            Contenido relacionado con <data:blog.pageName />
+          </h1>
+          <b:elseif cond="data:view.isSearch" />
+          <h1 class="header__title">
+            Buscando el siguiente contenido: <data:blog.searchQuery />
+          </h1>
+          <b:elseif cond="data:view.isPost or data:view.isPage" />
+          <h1 class="header__title">
+            <data:blog.pageName />
+          </h1>
+          <b:elseif cond="data:view.isHomepage" />
+          <h1 class="header__title--description">
+            <data:view.description.escaped />
+          </h1>
+          <p class="header__title--blog">
+            <data:blog.pageTitle />
+          </p>
+          <b:else />
+          <data:blog.pageTitle />
+        </b:if>
+      </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main">
+      <b:if cond="data:view.isPost">
+        <b:include name="sidebar:toc" />
+      </b:if>
+      <b:section id="main" showaddelement="yes">
+        <b:widget id="Blog1" class="post single" type="Blog">
+          <!-- Main content -->
+          <b:includable id="main">
+            <b:if cond="!data:view.isPost and !data:view.isPage">
+              <b:attr name="class" value="main__content" />
+            </b:if>
+            <b:attr name="data-version" value="" />
+            <!-- Si es la pagina principal -->
+            <b:if cond="data:view.isHomepage">
+              <!-- Entrada mas reciente -->
+              <b:include
+                name="newest:post"
+                data=" { post: data:posts.first } "
+              />
+
+              <!-- Labels Section -->
+              <header class="title">
+                <h2 class="title__text">
+                  En esta seccion encontraras tutoriales paso a paso, trucos y
+                  consejos para sacarle el mejor provecho a Blogger.
+                </h2>
+              </header>
+              <b:include
+                name="label:section"
+                data='{posts: data:posts, labelName: "Blogger"}'
+              />
+              <header class="title">
+                <h2 class="title__text">
+                  En esta seccion encontraras tutoriales paso a paso, trucos y
+                  consejos para sacarle el mejor provecho a JavaScript.
+                </h2>
+              </header>
+              <b:include
+                name="label:section"
+                data='{posts: data:posts, labelName: "JavaScript"}'
+              />
+              <header class="title">
+                <h2 class="title__text">
+                  En esta seccion encontraras tutoriales paso a paso, trucos y
+                  consejos para sacarle el mejor provecho a CSS.
+                </h2>
+              </header>
+              <b:include
+                name="label:section"
+                data='{posts: data:posts, labelName: "CSS"}'
+              />
+              <header class="title">
+                <h2 class="title__text">
+                  En esta seccion encontraras tutoriales paso a paso, trucos y
+                  consejos para sacarle el mejor provecho a CSS.
+                </h2>
+              </header>
+              <b:include
+                name="label:section"
+                data='{posts: data:posts, labelName: "HTML"}'
+              />
+            </b:if>
+            <b:if cond="data:view.isLabelSearch or data:view.isSearch">
+              <b:include
+                name="post:loopBySearch"
+                data="{ posts: data:posts }"
+              />
+            </b:if>
+            <b:if cond="data:view.isPost or data:view.isPage">
+              <!-- Si es una publicacion individual -->
+              <b:with value="data:posts.first" var="post">
+                <b:include name="post:body" />
+                <b:include name="post:pagination" />
+                <b:include
+                  name="comment:main"
+                  data="{ depth: 2, texts: { delete: data:skin.vars.t_delete, reply: data:skin.vars.t_reply } }"
+                />
+              </b:with>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </main>
+
+    <!-- Footer Principal -->
+    <footer class="footer">
+      <p>© 2024</p>
+    </footer>
+    <b:if cond="data:view.isHomepage">
+      <script type="text/javascript">
+        // The main container with scrollable elements inside
+        (() => {
+          const container = document.getElementById("Blog1");
+
+          let isDown = false,
+            startX,
+            scrollLeft,
+            scrollableElement;
+
+          container.addEventListener("mousedown", (e) => {
+            isDown = true;
+            scrollableElement = getElementWithScroll(e.target);
+            startX = e.pageX - scrollableElement.offsetLeft;
+            scrollLeft = scrollableElement.scrollLeft;
+          });
+
+          container.addEventListener("mouseup", () => {
+            isDown = false;
+          });
+
+          container.addEventListener("mouseleave", () => {
+            isDown = false;
+          });
+
+          container.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            scrollableElement = getElementWithScroll(e.target);
+            const x = e.pageX - scrollableElement.offsetLeft;
+            const walkX = (x - startX) * 1.3; // Adjust scrolling speed
+            scrollableElement.scrollLeft = scrollLeft - walkX;
+          });
+
+          function getElementWithScroll(element) {
+            element.scrollWidth > element.clientWidth;
+            // Checking for the scroll propertie in the element
+            if (
+              element.scrollWidth > element.clientWidth ||
+              document.body == element
+            ) {
+              return element;
+            } else {
+              parent = element.parentNode;
+              // If not scroll propertiers, lets check the parent instead
+              return getElementWithScroll(parent);
+            }
+          }
+        })();
+      </script>
+    </b:if>
+    <script>
+      (() => {
+        const navWrapper = document.querySelector(".nav__wrapper");
+        window.addEventListener("scroll", (event) => {
+          window.scrollY == 0
+            ? navWrapper.classList.remove("top")
+            : navWrapper.classList.add("top");
+        });
+      })();
+    </script>
+    <b:if cond="data:view.isPost">
+      <script>
+        (() => {
+          const headings = document
+              .getElementById("article")
+              .querySelectorAll("h2, h3, h4, h5, h6"),
+            output = document.getElementById("toc__list");
+
+          headings.forEach((title) => {
+            const item = document.createElement(title.nodeName),
+              link = document.createElement("a");
+            title.id = title.textContent.replace(/ /g, "_");
+            link.textContent = title.textContent;
+            link.href = `#${title.id}`;
+            item.appendChild(link);
+            output.appendChild(item);
+          });
+        })();
+      </script>
+    </b:if>
+  </body>
+</html>
