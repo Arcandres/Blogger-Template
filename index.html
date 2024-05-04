@@ -159,40 +159,40 @@
       <b:defaultmarkup type="Common">
         <!-- Newest post -->
         <b:includable id="newest:post">
-          <article class="newest__post">
+          <article class="newestpost">
             <img
               expr:src="data:post.featuredImage resizeImage 200"
               expr:alt="data:post.title"
-              class="newest__post__image"
+              class="newestpost__image"
             />
-            <div class="newest__post__content">
-              <header class="newest__post__header">
-                <h2 class="newest__post__title">
+            <div class="newestpost__content">
+              <header class="newestpost__header">
+                <h2 class="newestpost__title">
                   <a expr:href="data:post.url"><data:post.title /></a>
                 </h2>
-                <time class="newest__post__date post__time"
+                <time class="newestpost__date post__time"
                   ><b:include
                     name="@meteor"
                     data='{ icon: "Calendar"}' /><data:post.date
                 /></time>
               </header>
               <p><b:eval expr="data:post.snippets.short" /></p>
-              <footer class="newest__post__footer">
-                <span class="newest__post__labels">
-                  <span class="newest__post__label"
+              <footer class="newestpost__footer">
+                <span class="newestpost__labels">
+                  <span class="newestpost__label"
                     ><a expr:href="data:post.labels.first.url"
                       ><b:include
                         name="@meteor"
                         data="{ icon: data:post.labels.first.name }" /></a
                   ></span>
-                  <span class="newest__post__label"
+                  <span class="newestpost__label"
                     ><a expr:href="data:post.labels.last.url"
                       ><b:include
                         name="@meteor"
                         data="{ icon: data:post.labels.last.name }" /></a
                   ></span>
                 </span>
-                <span class="newest__post__readmore">
+                <span class="newestpost__readmore">
                   <a expr:href="data:post.url"
                     ><b:include name="@meteor" data='{ icon: "Posts"}' /> Leer
                     Publicación</a
@@ -340,7 +340,6 @@
 
         <!-- Post pagination -->
         <b:includable id="post:pagination">
-          <data:items.last.url />
           <b:tag
             class="previous-next"
             cond="data:newerPageUrl or data:olderPageUrl"
@@ -917,9 +916,9 @@
       <nav class="nav">
         <div class="nav__home">
           <b:if cond="data:blog.url == data:blog.homepageUrl">
-            <span class="nav__link home--active true">Home</span>
+            <span class="nav__link true">Home</span>
             <b:else />
-            <a href="/" class="nav__link home">Home</a>
+            <a href="/" class="nav__link">Home</a>
           </b:if>
         </div>
 
@@ -957,20 +956,16 @@
 
         <!-- Formulario de busqueda -->
         <div class="nav__search">
-          <form
-            class="nav__search--form"
-            expr:action="data:blog.searchUrl"
-            role="search"
-          >
-            <label class="search__label">
+          <form expr:action="data:blog.searchUrl" role="search">
+            <label class="nav__search-label">
               <input
                 autocomplete="on"
-                class="search__input"
+                class="nav__search-input"
                 placeholder=" ¿Buscas algo en particular?"
                 name="q"
                 type="search"
               />
-              <svg class="i i-search" viewBox="0 0 24 24">
+              <svg class="i nav__search-icon" viewBox="0 0 24 24">
                 <circle cx="10" cy="10" r="7"></circle>
                 <path d="m15 15 6 6"></path>
               </svg>
@@ -982,7 +977,7 @@
 
     <!-- Header Principal -->
     <header class="header">
-      <div class="header-inner">
+      <div class="header__inner">
         <b:if cond="data:view.isError">
           <h1 class="header__title">Pagina No Encontrada</h1>
           <b:elseif cond="data:view.isLabelSearch" />
@@ -1032,8 +1027,8 @@
               />
 
               <!-- Labels Section -->
-              <header class="title">
-                <h2 class="title__text">
+              <header class="main__content-title">
+                <h2 class="main__content-text">
                   Encuentra
                   <strong>trucos, consejos y tutoriales Blogger</strong> que te
                   ayudaran a crear y
@@ -1044,8 +1039,8 @@
                 name="label:section"
                 data='{posts: data:posts, labelName: "Blogger"}'
               />
-              <header class="title">
-                <h2 class="title__text">
+              <header class="main__content-title">
+                <h2 class="main__content-text">
                   En esta seccion encontraras tutoriales paso a paso, trucos y
                   consejos para sacarle el mejor provecho a JavaScript.
                 </h2>
@@ -1054,8 +1049,8 @@
                 name="label:section"
                 data='{posts: data:posts, labelName: "JavaScript"}'
               />
-              <header class="title">
-                <h2 class="title__text">
+              <header class="main__content-title">
+                <h2 class="main__content-text">
                   En esta seccion encontraras tutoriales paso a paso, trucos y
                   consejos para sacarle el mejor provecho a CSS.
                 </h2>
@@ -1064,8 +1059,8 @@
                 name="label:section"
                 data='{posts: data:posts, labelName: "CSS"}'
               />
-              <header class="title">
-                <h2 class="title__text">
+              <header class="main__content-title">
+                <h2 class="main__content-text">
                   En esta seccion encontraras tutoriales paso a paso, trucos y
                   consejos para sacarle el mejor provecho a CSS.
                 </h2>
