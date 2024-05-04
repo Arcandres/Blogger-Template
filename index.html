@@ -1111,6 +1111,7 @@
             scrollableElement;
 
           container.addEventListener("mousedown", (e) => {
+            e.preventDefault();
             isDown = true;
             scrollableElement = getElementWithScroll(e.target);
             startX = e.pageX - scrollableElement.offsetLeft;
