@@ -239,7 +239,7 @@
             >
               <article
                 expr:class='"post " + data:post.labels.first.name'
-                expr:style='"background-image: url(" + data:post.featuredImage resizeImage 300 + ")"'
+                expr:style='"background-image: url(" + data:post.featuredImage ?: "https://arcandres.github.io/assets/img/image.png" resizeImage 300 + ")"'
               >
                 <span
                   class="post__meta"

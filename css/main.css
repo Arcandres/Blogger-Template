@@ -70,6 +70,9 @@ body {
   font-family: "Ubuntu";
   color: var(--text-color);
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 h1,
@@ -245,7 +248,7 @@ a:hover {
   margin-top: 2rem;
   position: sticky;
   padding: 1rem 1.5rem;
-  top: 70px;
+  top: 78px;
 }
 
 .toc__title {
@@ -505,6 +508,7 @@ a:hover {
 .main__title {
   margin: 3rem 0;
   font-size: 1.3rem;
+  text-align: center;
 }
 
 .label__view .main__section {
@@ -808,10 +812,6 @@ a.pager-button:hover {
   position: absolute;
   left: -21px;
   top: -5px;
-}
-
-:where(.item-control, .blog-admin) {
-  display: none;
 }
 
 #reply-form {
