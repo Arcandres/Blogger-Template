@@ -240,11 +240,11 @@ a:hover {
 }
 
 .toc {
-  border-radius: 7px;
+  border-radius: 1rem;
   border: 1px solid var(--text-color-darker);
   margin-top: 2rem;
   position: sticky;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   top: 70px;
 }
 
@@ -326,7 +326,7 @@ a:hover {
   display: flex;
   border-radius: 10px;
   margin: 4rem auto;
-  background: radial-gradient(#313740, #23272e);
+  background-image: radial-gradient(#292e36, #1e2227);
   padding: 1rem;
   position: relative;
   width: 720px;
@@ -673,6 +673,10 @@ p code {
   gap: 1rem;
   justify-content: space-between;
   padding: 0 1rem;
+}
+
+a.pager-button:hover {
+  text-decoration: none;
 }
 
 .pager-button {
