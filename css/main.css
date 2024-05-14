@@ -179,11 +179,11 @@ a:hover {
   align-self: center;
 }
 
-.nav__checkbox:checked ~ .nav__search {
+.nav__checkbox:checked~.nav__search {
   display: block;
 }
 
-.nav__checkbox:checked ~ .nav__list {
+.nav__checkbox:checked~.nav__list {
   display: none;
 }
 
@@ -535,7 +535,7 @@ a:hover {
   margin: 2rem 0;
 }
 
-.article > img {
+.article>img {
   border-radius: 10px;
   display: flex;
   margin: auto;
@@ -543,6 +543,21 @@ a:hover {
 
 .article p {
   line-height: 1.4;
+}
+
+.article li>p {
+  font-size: 14px;
+  margin-top: 0;
+  color: var(--text-color-darker);
+}
+
+.article>ol>li>ol,
+.article>ol,
+.article>ul>li>ul,
+.article>ul {
+  list-style-type: auto;
+  margin-bottom: 1rem;
+  padding-left: 2em;
 }
 
 .post__profile {
@@ -848,7 +863,7 @@ a.pager-button:hover {
     display: block;
   }
 
-  .nav__checkbox:checked ~ .nav__home {
+  .nav__checkbox:checked~.nav__home {
     display: block;
   }
 }
