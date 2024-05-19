@@ -163,9 +163,11 @@
             </span>
           </div>
           <div class="posts__inner">
-            <b:loop index='i' values='data:items ?: data:posts' var='post'>
+            <b:loop index='i' values='data:posts limit 4' var='post'>
               <article class="post">
-                <img expr:src="data:post.featuredImage resizeImage 200" expr:alt="data:post.title" class="post__image" />
+                <a expr:href="data:post.url">
+                  <img expr:src='resizeImage(data:post.featuredImage, 280, "280:160")' expr:alt="data:post.title" class="post__image" />
+                </a>
                 <div class="post__content">
                   <header class="post__header">
                     <h2 class="post__title">
@@ -178,6 +180,11 @@
               </article>
             </b:loop>
           </div>
+          <footer class="posts__footer">
+            <button class="posts__button" aria-label="Ir a todas las Publicaciones">
+              <a class="posts__link" href="/search">Ver todos</a>
+            </button>
+          </footer>
         </section>
       </b:includable>
 
@@ -185,6 +192,14 @@
       <b:includable id="label:section">
         <b:with value='data:labelName ?: "No label"' var="labelName">
           <section expr:class='"main__section " + data:labelName'>
+            <header class="main__content-title">
+              <h2 class="main__content-text">
+                Encuentra
+                <strong>trucos, consejos y tutoriales Blogger</strong> que te
+                ayudaran a crear y
+                <strong>personalizar tu Blog al maximo</strong>.
+              </h2>
+            </header>
             <b:include name="post:loop" />
             <div class="label__nav">
               <b:tag expr:href='data:blog.searchUrl + "/label/" + data:labelName' name="a">
@@ -789,10 +804,6 @@
             <a expr:href='(data:view.search.label != "CSS") ? "/search/label/CSS" : "#"'
               expr:class='"nav__link " + (data:view.search.label == "CSS")'>CSS</a>
           </li>
-          <li class="nav__item">
-            <a expr:href='(data:view.search.label != "HTML") ? "/search/label/HTML" : "#"'
-              expr:class='"nav__link " + (data:view.search.label == "HTML")'>HTML</a>
-          </li>
         </ul>
       </div>
 
@@ -861,37 +872,8 @@
             <b:include name="newest:posts" data=" { posts: data:posts } " />
 
             <!-- Labels Section -->
-            <header class="main__content-title">
-              <h2 class="main__content-text">
-                Encuentra
-                <strong>trucos, consejos y tutoriales Blogger</strong> que te
-                ayudaran a crear y
-                <strong>personalizar tu Blog al maximo</strong>.
-              </h2>
-            </header>
             <b:include name="label:section" data='{posts: data:posts, labelName: "Blogger"}' />
-            <header class="main__content-title">
-              <h2 class="main__content-text">
-                En esta seccion encontraras tutoriales paso a paso, trucos y
-                consejos para sacarle el mejor provecho a JavaScript.
-              </h2>
-            </header>
-            <b:include name="label:section" data='{posts: data:posts, labelName: "JavaScript"}' />
-            <header class="main__content-title">
-              <h2 class="main__content-text">
-                En esta seccion encontraras tutoriales paso a paso, trucos y
-                consejos para sacarle el mejor provecho a CSS.
-              </h2>
-            </header>
-            <b:include name="label:section" data='{posts: data:posts, labelName: "CSS"}' />
-            <header class="main__content-title">
-              <h2 class="main__content-text">
-                En esta seccion encontraras tutoriales paso a paso, trucos y
-                consejos para sacarle el mejor provecho a CSS.
-              </h2>
-            </header>
-            <b:include name="label:section" data='{posts: data:posts, labelName: "HTML"}' />
-          </b:if>
+           </b:if>
           <b:if cond="data:view.isLabelSearch or data:view.isSearch">
             <b:include name="post:loopBySearch" data="{ posts: data:posts }" />
           </b:if>
@@ -913,59 +895,6 @@
   <footer class="footer">
     <p>© 2024</p>
   </footer>
-  <b:if cond="data:view.isHomepage">
-    <script type="text/javascript">
-      // The main container with scrollable elements inside
-      (() => {
-        const container = document.getElementById("Blog1");
-
-        let isDown = false,
-          startX,
-          scrollLeft,
-          scrollableElement;
-
-        container.addEventListener("mousedown", (e) => {
-          e.preventDefault();
-          isDown = true;
-          scrollableElement = getElementWithScroll(e.target);
-          startX = e.pageX - scrollableElement.offsetLeft;
-          scrollLeft = scrollableElement.scrollLeft;
-        });
-
-        container.addEventListener("mouseup", () => {
-          isDown = false;
-        });
-
-        container.addEventListener("mouseleave", () => {
-          isDown = false;
-        });
-
-        container.addEventListener("mousemove", (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          scrollableElement = getElementWithScroll(e.target);
-          const x = e.pageX - scrollableElement.offsetLeft;
-          const walkX = (x - startX) * 1.3; // Adjust scrolling speed
-          scrollableElement.scrollLeft = scrollLeft - walkX;
-        });
-
-        function getElementWithScroll(element) {
-          element.scrollWidth > element.clientWidth;
-          // Checking for the scroll propertie in the element
-          if (
-            element.scrollWidth > element.clientWidth ||
-            document.body == element
-          ) {
-            return element;
-          } else {
-            parent = element.parentNode;
-            // If not scroll propertiers, lets check the parent instead
-            return getElementWithScroll(parent);
-          }
-        }
-      })();
-    </script>
-  </b:if>
   <script>
     (() => {
       const navWrapper = document.querySelector(".nav__wrapper");

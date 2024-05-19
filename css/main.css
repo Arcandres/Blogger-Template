@@ -70,6 +70,7 @@ body {
   background: var(--bg-body-200);
   font-family: "Ubuntu";
   color: var(--text);
+  font-size: 16px;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -189,10 +190,6 @@ a:hover {
 
 /*---------------- Main section ----------------*/
 
-.main a:hover {
-  text-decoration: underline;
-}
-
 .main__content {
   margin-left: auto;
   margin-right: auto;
@@ -206,7 +203,7 @@ a:hover {
 }
 
 .posts__title {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 .posts__inner {
@@ -214,13 +211,45 @@ a:hover {
   gap: 1rem;
 }
 
+.post {
+  max-width: 280px;
+  width: 100%;
+}
+
 .post__image {
   border-radius: 8px;
+  transition-property: border;
+  transition-duration: .3s;
+  border: 2px solid transparent;
+}
+
+.post__image:hover {
+  border: 2px solid;
 }
 
 .post__title {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: normal;
+  text-align: center;
+  padding: 0 .5rem;
+}
+
+.posts__footer {
+  text-align: center;
+  margin: 4rem 0;
+}
+
+.posts__button {
+  background: none;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: .6rem 1.1rem;
+  font-size: 1.2em;
+  border-radius: 1rem;
+}
+
+.posts__link:hover {
+  text-decoration: none;
 }
 
 /* Styles for post view only */
