@@ -24,15 +24,16 @@
  */
 
 :root {
+  --bg-body-100: #161A1F;
+  --bg-body-200: #1A1E24;
+  --text: #BBC5D3;
+  --text-100: #727881;
+  --text-200: #99a1ad;
+  --container: #262C34;
   --main-color: #66aadd;
-  --secondary-color: #c7d;
-  --terciary-color: #9c7;
-  --quaternary-color: #d67;
-  --background-dark: #23272e;
-  --background-darker: #1e2227;
-  --text-color: #a3a9b6;
-  --text-color-darker: #484c54;
-  --html-color: #e96227;
+  --second-color: #c7d;
+  --third-color: #9c7;
+  --fourt-color: #d67;
   --js-color: #ec7;
   --blogger-color: #fe6602;
 }
@@ -66,27 +67,15 @@
 }
 
 body {
-  background: var(--background-dark);
+  background: var(--bg-body-200);
   font-family: "Ubuntu";
-  color: var(--text-color);
+  color: var(--text);
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol,
-body {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 img {
@@ -102,7 +91,6 @@ a:hover {
   color: var(--main-color);
 }
 
-/* Icons */
 .i {
   stroke-width: var(--i-stroke, 2);
   width: var(--i-size, 18px);
@@ -114,118 +102,70 @@ a:hover {
   margin-right: 2px;
 }
 
+
 /*---------------- Navigation section ----------------*/
 
 .nav__wrapper {
-  width: 100%;
   position: fixed;
-  top: 0;
-  transition-duration: 0.5s;
-  z-index: 100;
+  width: 100%;
+  z-index: 10;
 }
 
-.nav__wrapper.top {
-  background: var(--background-darker);
-  border-bottom: 1px solid var(--text-color-darker);
+.nav,
+.nav__menu,
+.nav__list {
+  display: flex;
 }
 
 .nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin: 0 auto;
-  padding: 0 1em;
-  position: relative;
-  width: clamp(344px, 100%, 1280px);
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto
 }
 
-.nav__checkbox,
-.nav__home,
-.nav__search,
-.nav__checkbox {
-  display: none;
-}
-
-.nav__button {
-  position: absolute;
-  right: 13px;
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-
-.nav__list {
-  justify-self: center;
-  min-width: 281px;
-}
-
-.nav__item {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.nav__link {
-  display: inline-block;
-  padding: 16px 0;
-  font-size: 15px;
-  font-weight: normal;
-}
-
-.nav__link.true {
-  border-bottom: 2px solid var(--main-color);
-  color: var(--main-color);
-}
-
-.nav__search {
-  justify-self: end;
+.nav__home {
   align-self: center;
 }
 
-.nav__checkbox:checked~.nav__search {
-  display: block;
+.nav__list {
+  background: var(--container);
+  color: var(--text);
+  border-radius: 2rem;
+  list-style: none;
+  margin: 1rem 2rem;
+  padding: .8rem;
 }
 
-.nav__checkbox:checked~.nav__list {
-  display: none;
+.nav__item {
+  padding: 0 1rem
 }
 
-.nav__search-label {
-  display: flex;
-  align-items: center;
+.nav__search {
+  align-self: center;
+}
+
+.nav__search button {
+  color: var(--text);
+  background: none;
+  border: none;
 }
 
 .nav__search-icon {
-  background: var(--background-dark);
-  padding: 6px;
-  width: 34px;
-  height: 34px;
-  color: var(--text-color-darker);
-  margin: 0;
-  border-radius: 0 1rem 1rem 0;
-}
-
-.nav__search-input {
-  background: var(--background-dark);
-  color: var(--text-color);
-  padding: 8px;
-  border-radius: 1rem 0 0 1rem;
-  border: 1px solid transparent;
-  outline: 0;
-}
-
-.nav__search-input:focus {
-  border: 1px solid var(--main-color);
+  height: 22px;
+  width: 22px;
+  stroke-width: 3
 }
 
 /*---------------- Header section ----------------*/
 
 .header {
-  background-image: url(https://arcandres.github.io/assets/img/header.jpg);
-  width: 100%;
+  background: var(--bg-body-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-}
-
-.header__title--description,
-.header__title--blog {
-  padding: .5em;
+  min-height: 600px;
+  width: 100%;
 }
 
 .header__inner {
@@ -861,7 +801,7 @@ a.pager-button:hover {
   padding: 2rem;
 }
 
-@media (min-width: 300px) {
+/* @media (min-width: 300px) {
   .nav__home {
     display: none;
   }
@@ -911,4 +851,4 @@ a.pager-button:hover {
   .pager-button {
     width: auto;
   }
-}
+} */

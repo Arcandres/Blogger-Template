@@ -154,43 +154,29 @@
     </b:defaultmarkup>
     <b:defaultmarkup type="Common">
       <!-- Newest post -->
-      <b:includable id="newest:post">
-        <article class="newestpost">
-          <img expr:src="data:post.featuredImage resizeImage 200" expr:alt="data:post.title"
-            class="newestpost__image" />
-          <div class="newestpost__content">
-            <header class="newestpost__header">
-              <h2 class="newestpost__title">
-                <a expr:href="data:post.url">
-                  <data:post.title />
-                </a>
-              </h2>
-              <time class="newestpost__date post__time">
-                <b:include name="@meteor" data='{ icon: "Calendar"}' />
-                <data:post.date />
-              </time>
-            </header>
-            <p>
-              <b:eval expr="data:post.snippets.short" />
-            </p>
-            <footer class="newestpost__footer">
-              <span class="newestpost__labels">
-                <span class="newestpost__label"><a expr:href="data:post.labels.first.url">
-                    <b:include name="@meteor" data="{ icon: data:post.labels.first.name }" />
-                  </a></span>
-                <span class="newestpost__label"><a expr:href="data:post.labels.last.url">
-                    <b:include name="@meteor" data="{ icon: data:post.labels.last.name }" />
-                  </a></span>
-              </span>
-              <span class="newestpost__readmore">
-                <a expr:href="data:post.url">
-                  <b:include name="@meteor" data='{ icon: "Posts"}' /> Leer
-                  Publicación
-                </a>
-              </span>
-            </footer>
+      <b:includable id="newest:posts">
+        <section class="posts">
+          <div class="posts__header">
+            <!-- Add icon later... -->
+            <span class="posts title">
+              Publicados Recientemente
+            </span>
           </div>
-        </article>
+          <b:loop index='i' values='data:items ?: data:posts' var='post'>
+            <article class="post">
+              <img expr:src="data:post.featuredImage resizeImage 200" expr:alt="data:post.title" class="post__image" />
+              <div class="post__content">
+                <header class="post__header">
+                  <h2 class="post__title">
+                    <a expr:href="data:post.url">
+                      <data:post.title />
+                    </a>
+                  </h2>
+                </header>
+              </div>
+            </article>
+          </b:loop>
+        </section>
       </b:includable>
 
       <!-- Label Section -->
@@ -775,49 +761,47 @@
   <!-- Menu de Navegacion -->
   <div class="nav__wrapper">
     <nav class="nav">
-      <input type="checkbox" class="nav__checkbox" id="open-menu" />
-      <label for="open-menu" class="nav__button" role="button">≡</label>
+      <!-- <input type="checkbox" class="nav__checkbox" id="open-menu" />
+      <label for="open-menu" class="nav__button" role="button">≡</label> -->
 
-      <div class="nav__home">
-        <b:if cond="data:blog.url == data:blog.homepageUrl">
-          <span class="nav__link true">Home</span>
-          <b:else />
-          <a href="/" class="nav__link">Home</a>
-        </b:if>
+      <div class='nav__menu'>
+        <div class="nav__home">
+          <b:if cond="data:blog.url == data:blog.homepageUrl">
+            <span class="nav__link true">Inicio</span>
+            <b:else />
+            <a href="/" class="nav__link">Inicio</a>
+          </b:if>
+        </div>
+
+        <!-- Lista de enlaces -->
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a expr:href='(data:view.search.label != "Blogger") ? "/search/label/Blogger" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "Blogger")'>Blogger</a>
+          </li>
+          <li class="nav__item">
+            <a expr:href='(data:view.search.label != "JavaScript") ? "/search/label/JavaScript" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "JavaScript")'>JavaScript</a>
+          </li>
+          <li class="nav__item">
+            <a expr:href='(data:view.search.label != "CSS") ? "/search/label/CSS" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "CSS")'>CSS</a>
+          </li>
+          <li class="nav__item">
+            <a expr:href='(data:view.search.label != "HTML") ? "/search/label/HTML" : "#"'
+              expr:class='"nav__link " + (data:view.search.label == "HTML")'>HTML</a>
+          </li>
+        </ul>
       </div>
-
-      <!-- Lista de enlaces -->
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a expr:href='(data:view.search.label != "Blogger") ? "/search/label/Blogger" : "#"'
-            expr:class='"nav__link " + (data:view.search.label == "Blogger")'>Blogger</a>
-        </li>
-        <li class="nav__item">
-          <a expr:href='(data:view.search.label != "JavaScript") ? "/search/label/JavaScript" : "#"'
-            expr:class='"nav__link " + (data:view.search.label == "JavaScript")'>JavaScript</a>
-        </li>
-        <li class="nav__item">
-          <a expr:href='(data:view.search.label != "CSS") ? "/search/label/CSS" : "#"'
-            expr:class='"nav__link " + (data:view.search.label == "CSS")'>CSS</a>
-        </li>
-        <li class="nav__item">
-          <a expr:href='(data:view.search.label != "HTML") ? "/search/label/HTML" : "#"'
-            expr:class='"nav__link " + (data:view.search.label == "HTML")'>HTML</a>
-        </li>
-      </ul>
 
       <!-- Formulario de busqueda -->
       <div class="nav__search">
-        <form expr:action="data:blog.searchUrl" role="search">
-          <label class="nav__search-label">
-            <input autocomplete="on" class="nav__search-input" placeholder=" ¿Buscas algo en particular?" name="q"
-              type="search" />
-            <svg class="i nav__search-icon" viewBox="0 0 24 24">
-              <circle cx="10" cy="10" r="7"></circle>
-              <path d="m15 15 6 6"></path>
-            </svg>
-          </label>
-        </form>
+        <button aria-label="Abrir caja de busqueda">
+          <svg class="i nav__search-icon" viewBox="0 0 24 24">
+            <circle cx="10" cy="10" r="7"></circle>
+            <path d="m15 15 6 6"></path>
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
@@ -832,7 +816,7 @@
           Contenido relacionado con
           <data:blog.pageName />
         </h1>
-      <b:elseif cond="data:view.isSearch" />
+        <b:elseif cond="data:view.isSearch" />
         <h1 class="header__title">
           Buscando el siguiente contenido:
           <data:blog.searchQuery />
@@ -841,7 +825,7 @@
         <h1 class="header__title">
           <data:blog.pageName />
         </h1>
-      <b:elseif cond="data:view.isHomepage" />
+        <b:elseif cond="data:view.isHomepage" />
         <h1 class="header__title--description">
           <data:view.description.escaped />
         </h1>
@@ -851,6 +835,8 @@
         <b:else />
         <data:blog.pageTitle />
       </b:if>
+    </div>
+    <div class="header__shape">
     </div>
   </header>
 
@@ -870,7 +856,7 @@
           <!-- Si es la pagina principal -->
           <b:if cond="data:view.isHomepage">
             <!-- Entrada mas reciente -->
-            <b:include name="newest:post" data=" { post: data:posts.first } " />
+            <b:include name="newest:posts" data=" { posts: data:posts } " />
 
             <!-- Labels Section -->
             <header class="main__content-title">
