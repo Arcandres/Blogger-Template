@@ -223,6 +223,11 @@ a:hover {
   text-align: center;
 }
 
+.header__title--description,
+.header__title--blog {
+  padding: .5em;
+}
+
 .header__inner {
   max-width: 600px;
   min-height: 400px;
@@ -333,6 +338,7 @@ a:hover {
 
 .newestpost {
   display: flex;
+  flex-direction: column;
   border-radius: 10px;
   margin: 4rem auto;
   background-image: radial-gradient(#292e36, #1e2227);
@@ -355,7 +361,6 @@ a:hover {
 }
 
 .newestpost__content {
-  margin: 0 10px 0 1rem;
   display: flex;
   flex-flow: column;
   flex-grow: 1;
@@ -368,6 +373,7 @@ a:hover {
 
 .newestpost__header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   border-radius: 5px;
 }
@@ -382,6 +388,7 @@ a:hover {
 }
 
 .newestpost__date.post__time {
+  align-self: end;
   padding: 0;
   background: none;
   white-space: nowrap;
@@ -865,6 +872,12 @@ a.pager-button:hover {
 
   .nav__checkbox:checked~.nav__home {
     display: block;
+  }
+}
+
+@media (min-width: 500px) {
+  .newestpost__content {
+    margin: 0 10px 0 1rem;
   }
 }
 
