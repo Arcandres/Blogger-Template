@@ -223,11 +223,10 @@
 
       <!-- Posts loop -->
       <b:includable id="post:loop">
-        <b:loop values="data:posts" index="i" var="post">
+        <b:loop values="data:posts limit 6" index="i" var="post">
           <b:if
             cond="(data:post.labels.first.name == data:labelName) or (data:post.labels.last.name == data:labelName) ">
-            <article expr:class='"post " + data:post.labels.first.name'
-              expr:style='"background-image: url(" + data:post.featuredImage ?: "https://arcandres.github.io/assets/img/image.png" resizeImage 300 + ")"'>
+            <article expr:class='"post " + data:post.labels.first.name'>
               <span class="post__meta" expr:title='"Etiqueta " + data:post.labels.first.name'>
                 <span class="post__tag"><a expr:href="data:post.labels.first.url">
                     <b:include name="@meteor" data="{ icon: data:post.labels.first.name}" />
@@ -242,6 +241,7 @@
                   <data:post.title />
                 </a>
               </h3>
+              <p><b:eval expr="data:post.snippets.short" /></p>
             </article>
           </b:if>
         </b:loop>
@@ -281,7 +281,7 @@
         <b:include name="next:prev" />
       </b:includable>
 
-      <!-- Paginacion -->
+      <!-- Pagination -->
       <b:includable id="next:prev">
         <nav class="posts__nav">
           <b:if cond="data:newerPageUrl">

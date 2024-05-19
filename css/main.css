@@ -252,37 +252,9 @@ a:hover {
   text-decoration: none;
 }
 
-/* Styles for post view only */
-.item__view .main {
-  grid-template-columns: 1fr;
-  padding: 1em;
-  gap: 0;
-}
+/*---------------- Label section ----------------*/
 
-.main__section {
-  display: grid;
-  grid-template-columns: repeat(4, 278px);
-  grid-auto-flow: column;
-  grid-auto-columns: 278px;
-  overflow: auto;
-  gap: 1rem;
-  padding-bottom: 2rem;
-  cursor: grab;
-}
 
-.main__section:active {
-  cursor: grabbing;
-}
-
-.main__content-title {
-  padding-top: 30px;
-  padding-bottom: 40px;
-}
-
-.main__content-text {
-  font-size: 1rem;
-  font-weight: normal;
-}
 
 /*---------------- Sidebar section ----------------*/
 
