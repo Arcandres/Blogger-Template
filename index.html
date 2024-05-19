@@ -201,11 +201,6 @@
               </h2>
             </header>
             <b:include name="post:loop" />
-            <div class="label__nav">
-              <b:tag expr:href='data:blog.searchUrl + "/label/" + data:labelName' name="a">
-                Ver todas →
-              </b:tag>
-            </div>
           </section>
         </b:with>
       </b:includable>
@@ -223,28 +218,21 @@
 
       <!-- Posts loop -->
       <b:includable id="post:loop">
-        <b:loop values="data:posts limit 6" index="i" var="post">
-          <b:if
-            cond="(data:post.labels.first.name == data:labelName) or (data:post.labels.last.name == data:labelName) ">
-            <article expr:class='"post " + data:post.labels.first.name'>
-              <span class="post__meta" expr:title='"Etiqueta " + data:post.labels.first.name'>
-                <span class="post__tag"><a expr:href="data:post.labels.first.url">
-                    <b:include name="@meteor" data="{ icon: data:post.labels.first.name}" />
-                  </a></span>
-                <time class="post__time">
-                  <b:include name="@meteor" data='{ icon: "Calendar"}' />
-                  <data:post.date />
-                </time>
-              </span>
-              <h3 class="post__title" expr:title="data:post.title">
-                <a expr:href="data:post.url">
-                  <data:post.title />
-                </a>
-              </h3>
-              <p><b:eval expr="data:post.snippets.short" /></p>
-            </article>
-          </b:if>
-        </b:loop>
+        <div class="main__content-inner">
+          <b:loop values="data:posts" index="i" var="post">
+            <b:if cond="data:post.labels any (label => label.name == labelName)">
+              <article expr:class='"main__content--post " + data:labelName'>
+                <img expr:src="data:post.featuredImage" expr:alt="data:post.title" />
+                <div class="main__content--post-inner">
+                  <h3 class="main__content--title" expr:title="data:post.title">
+                    <a expr:href="data:post.url"><data:post.title /></a>
+                  </h3>
+                  <p><b:eval expr="data:post.snippets.short" /></p>
+                </div>
+              </article>
+            </b:if>
+          </b:loop>
+        </div>
       </b:includable>
 
       <b:includable id="post:loopBySearch">
@@ -893,7 +881,38 @@
 
   <!-- Footer Principal -->
   <footer class="footer">
-    <p>© 2024</p>
+    <div class="footer__content">
+      <div class="footer__left">
+        <h3>The Blogger Web Developer</h3>
+        <p>
+          Blog dedicado al desarrollo web que tanto me apasiona,<br /> 
+          escrito en la primer plataforma que aprendí sobre éste.
+        </p>
+        <span>
+          <!-- Icons -->
+        </span>
+      </div>
+      <div class="footer__right">
+        <div class="footer__tools">
+          <h3>Herramientas</h3>
+          <ul>
+            <li>Resaltador de código</li>
+            <li>Sitemap</li>
+          </ul>
+        </div>
+        <div class="footer__legal">
+          <h3>Legal</h3>
+          <ul>
+            <li>Terminos y condiciones</li>
+            <li>Politica de privacidad</li>
+            <li>Contacto</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 The Blogger Web Developer - Potenciando por Blogger</p>
+    </div>
   </footer>
   <script>
     (() => {
