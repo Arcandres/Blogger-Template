@@ -158,24 +158,26 @@
         <section class="posts">
           <div class="posts__header">
             <!-- Add icon later... -->
-            <span class="posts title">
+            <span class="posts__title">
               Publicados Recientemente
             </span>
           </div>
-          <b:loop index='i' values='data:items ?: data:posts' var='post'>
-            <article class="post">
-              <img expr:src="data:post.featuredImage resizeImage 200" expr:alt="data:post.title" class="post__image" />
-              <div class="post__content">
-                <header class="post__header">
-                  <h2 class="post__title">
-                    <a expr:href="data:post.url">
-                      <data:post.title />
-                    </a>
-                  </h2>
-                </header>
-              </div>
-            </article>
-          </b:loop>
+          <div class="posts__inner">
+            <b:loop index='i' values='data:items ?: data:posts' var='post'>
+              <article class="post">
+                <img expr:src="data:post.featuredImage resizeImage 200" expr:alt="data:post.title" class="post__image" />
+                <div class="post__content">
+                  <header class="post__header">
+                    <h2 class="post__title">
+                      <a expr:href="data:post.url">
+                        <data:post.title />
+                      </a>
+                    </h2>
+                  </header>
+                </div>
+              </article>
+            </b:loop>
+          </div>
         </section>
       </b:includable>
 

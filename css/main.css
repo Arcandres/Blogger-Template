@@ -187,6 +187,74 @@ a:hover {
   font-weight: normal;
 }
 
+/*---------------- Main section ----------------*/
+
+.main a:hover {
+  text-decoration: underline;
+}
+
+.main__content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+/*---------------- Posts section ----------------*/
+
+.posts__header {
+  margin: 4rem 0;
+}
+
+.posts__title {
+  font-size: 1.5rem;
+}
+
+.posts__inner {
+  display: flex;
+  gap: 1rem;
+}
+
+.post__image {
+  border-radius: 8px;
+}
+
+.post__title {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/* Styles for post view only */
+.item__view .main {
+  grid-template-columns: 1fr;
+  padding: 1em;
+  gap: 0;
+}
+
+.main__section {
+  display: grid;
+  grid-template-columns: repeat(4, 278px);
+  grid-auto-flow: column;
+  grid-auto-columns: 278px;
+  overflow: auto;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  cursor: grab;
+}
+
+.main__section:active {
+  cursor: grabbing;
+}
+
+.main__content-title {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.main__content-text {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 /*---------------- Sidebar section ----------------*/
 
 .sidebar__container {
@@ -227,51 +295,6 @@ a:hover {
 #toc__list h5:before,
 #toc__list h6:before {
   content: "- ";
-}
-
-/*---------------- Main section ----------------*/
-
-.main a:hover {
-  text-decoration: underline;
-}
-
-.main__content {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-  padding: 0 1em 2em 1em;
-}
-
-/* Styles for post view only */
-.item__view .main {
-  grid-template-columns: 1fr;
-  padding: 1em;
-  gap: 0;
-}
-
-.main__section {
-  display: grid;
-  grid-template-columns: repeat(4, 278px);
-  grid-auto-flow: column;
-  grid-auto-columns: 278px;
-  overflow: auto;
-  gap: 1rem;
-  padding-bottom: 2rem;
-  cursor: grab;
-}
-
-.main__section:active {
-  cursor: grabbing;
-}
-
-.main__content-title {
-  padding-top: 30px;
-  padding-bottom: 40px;
-}
-
-.main__content-text {
-  font-size: 1rem;
-  font-weight: normal;
 }
 
 /*---------------- Tags section ----------------*/
@@ -321,73 +344,6 @@ a:hover {
 
 .JavaScript .label__nav a:hover {
   background-color: var(--js-color);
-}
-
-/*---------------- Cards section ----------------*/
-
-.post {
-  display: flex;
-  background-size: cover;
-  background-position: top;
-  padding-top: 5px;
-  border-radius: 10px;
-  min-height: 150px;
-  flex-flow: column;
-  border: 1px solid var(--text-color-darker);
-  justify-content: space-between;
-}
-
-.post__meta {
-  align-items: center;
-  display: flex;
-  font-weight: 600;
-  justify-content: space-between;
-}
-
-.post__tag {
-  padding: 0 9px;
-}
-
-.post__tag svg {
-  float: left;
-}
-
-.post__time {
-  display: flex;
-  background: #1e2227;
-  align-items: center;
-  border-radius: 5px 0 0 5px;
-  font-size: 12px;
-  padding: 4px 4px 4px 6px;
-  text-transform: capitalize;
-}
-
-.post .i-Calendar {
-  height: 15px;
-}
-
-.post__title {
-  font-size: 15px;
-  background-image: linear-gradient(transparent, black);
-  padding: 2rem 10px 10px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.post__title a {
-  text-shadow: 1px 2px 2px #000;
-  color: white;
-}
-
-.posts__nav {
-  grid-column: 4 / 1;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.posts__nav--link.disabled {
-  text-decoration: line-through;
 }
 
 /*---------------- Search Content ----------------*/
