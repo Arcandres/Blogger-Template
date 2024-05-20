@@ -107,6 +107,13 @@ a:hover {
   margin-right: 3px;
 }
 
+/* Custom Icons */
+.i-Search,
+.i-Blogger {
+  fill: currentColor;
+  stroke-width: 0;
+}
+
 
 /*---------------- Navigation section ----------------*/
 
@@ -161,12 +168,14 @@ a:hover {
   transition-duration: .3s;
 }
 
-.nav__link.Blogger--active, .nav__link.Blogger:hover {
+.nav__link.Blogger--active,
+.nav__link.Blogger:hover {
   color: var(--Blogger);
   text-shadow: 0 0 23px var(--Blogger);
 }
 
-.nav__link.JavaScript--active, .nav__link.JavaScript:hover {
+.nav__link.JavaScript--active,
+.nav__link.JavaScript:hover {
   color: var(--Js);
   text-shadow: 0 0 23px var(--Js);
 }
@@ -186,6 +195,7 @@ a:hover {
 }
 
 .nav__search button {
+  cursor: pointer;
   color: var(--text);
   background: none;
   border: none;
@@ -305,11 +315,11 @@ a:hover {
   align-items: center;
   cursor: pointer;
   background: none;
-  border: 1px solid var(--text);
-  color: var(--text);
-  padding: .6rem 1.1rem;
+  border: 1px solid var(--text-200);
+  color: var(--text-200);
+  padding: .4rem .9rem;
   font-size: 1.2em;
-  border-radius: 1rem;
+  border-radius: .7rem;
   margin: auto;
   transition-duration: .2s;
 }
@@ -338,13 +348,28 @@ a:hover {
 }
 
 .main__content-title {
-  left: 44px;
-  top: -37px;
+  top: -39px;
   position: absolute;
+  display: flex;
+  left: 16px;
+}
+
+.main__content--logo {
+  background: var(--bg-body-200);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1.5rem;
+}
+
+.main__content--logo .i {
+  width: 40px;
+  height: auto;
+  margin-bottom: .2rem;
 }
 
 .main__content-text {
-  font-size: .85em;
+  font-size: .9em;
   color: var(--text-200);
 }
 
@@ -367,6 +392,15 @@ a:hover {
 .main__content--read {
   text-align: right;
   padding: 0 1rem 1rem 0;
+}
+
+.main__content--read .i {
+  transition-property: transform;
+  transition-duration: .2s;
+}
+
+.main__content--read .i:hover {
+  transform: rotateZ(-90deg);
 }
 
 /*---------------- Sidebar section ----------------*/
