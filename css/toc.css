@@ -1,0 +1,41 @@
+/*---------------- Sidebar section ----------------*/
+
+.sidebar__container {
+  justify-self: auto;
+}
+
+.toc {
+  border-radius: 1rem;
+  border: 1px solid var(--text-color-darker);
+  margin-top: 2rem;
+  position: sticky;
+  padding: 1rem 1.5rem;
+  top: 78px;
+}
+
+.toc__title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+#toc__list h2,
+#toc__list h3,
+#toc__list h4,
+#toc__list h5,
+#toc__list h6 {
+  font-size: 14px;
+  padding: 4px 8px;
+  font-weight: normal;
+}
+
+#toc__list h2:before,
+#toc__list h3:before,
+#toc__list h4:before,
+#toc__list h5:before,
+#toc__list h6:before {
+  content: "- ";
+}

@@ -1,0 +1,141 @@
+/*---------------- Posts section ----------------*/
+
+.posts__header {
+  margin: 4rem 0;
+}
+
+.posts__title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.posts__title .i-Star {
+  width: 32px;
+  height: 32px;
+}
+
+.posts__inner {
+  display: flex;
+  gap: 1rem;
+}
+
+.post {
+  max-width: 280px;
+  width: 100%;
+}
+
+.post__image {
+  border-radius: 8px;
+  transition-property: border;
+  transition-duration: .3s;
+  border: 2px solid transparent;
+}
+
+.post__image:hover {
+  border: 2px solid;
+}
+
+.post__title {
+  font-size: 1em;
+  font-weight: normal;
+  text-align: center;
+  padding: 0 .5rem;
+}
+
+.posts__footer {
+  margin: 2rem 0 6rem 0;
+}
+
+.posts__button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--text-200);
+  color: var(--text-200);
+  padding: .4rem .9rem;
+  font-size: 1.2em;
+  border-radius: .7rem;
+  margin: auto;
+  transition-duration: .2s;
+}
+
+.posts__button:hover {
+  background: var(--text-100);
+  color: var(--bg-body-200);
+  border-color: var(--text-100);
+}
+
+.posts__button:active {
+  transform: translateY(2px);
+}
+
+.posts__link:hover {
+  text-decoration: none;
+}
+
+/*---------------- Label section ----------------*/
+
+.main__section {
+  border: 1px solid var(--text-100);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.main__content-title {
+  top: -39px;
+  position: absolute;
+  display: flex;
+  left: 16px;
+}
+
+.main__content--logo {
+  background: var(--bg-body-200);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1.5rem;
+}
+
+.main__content--logo .i {
+  width: 40px;
+  height: auto;
+  margin-bottom: .2rem;
+}
+
+.main__content-text {
+  font-size: .9em;
+  color: var(--text-200);
+}
+
+.main__content-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.main__content--post {
+  background: var(--container-200);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.main__content--post-inner {
+  padding: 0 1rem 1rem;
+}
+
+.main__content--read {
+  text-align: right;
+  padding: 0 1rem 1rem 0;
+}
+
+.main__content--read .i {
+  transition-property: transform;
+  transition-duration: .2s;
+}
+
+.main__content--read .i:hover {
+  transform: rotateZ(-90deg);
+}
