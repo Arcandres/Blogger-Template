@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html b:css="false" b:js="false" b:defaultwidgetversion="2" b:layoutsVersion="3" expr:dir="data:blog.languageDirection"
   expr:lang="data:blog.locale" b:templateUrl="rockpool.xml">
-<b:attr name="xmlns" value="" />
-<b:attr name="xmlns:b" value="" />
-<b:attr name="xmlns:data" value="" />
-<b:attr name="xmlns:expr" value="" />
+  <b:attr name="xmlns" value="" />
+  <b:attr name="xmlns:b" value="" />
+  <b:attr name="xmlns:data" value="" />
+  <b:attr name="xmlns:expr" value="" />
 
 <head>
   <meta expr:charset="data:blog.encoding" />
@@ -18,15 +18,803 @@
   <link expr:href="data:view.url.canonical" rel="canonical" />
   <link expr:href="data:blog.blogspotFaviconUrl" rel="icon" type="image/x-icon" />
   <link href="https://blogger.googleusercontent.com" rel="preconnect" />
-  <!-- <link rel="stylesheet" href="css/main.css" /> -->
-  <!-- <b:if cond='data:view.isLayoutMode'><b:skin><![CDATA[]]></b:skin><style>/*<![CDATA[*//*]]>*/</style></b:if> -->
-
-  <!-- <b:skin><![CDATA[]]></b:skin> -->
-  <b:skin>
-    <![CDATA[
-    
-    ]]>
+  <b:if cond='data:view.isLayoutMode'><style>/*<![CDATA[*//*]]>*/</style></b:if>
+  <b:skin class="variables">
+    <![CDATA[ /*
+      <!-- Constants -->
+      <Variable name="keycolor" description="Main Color" type="color" default="#e5f0ee" hideEditor="true"  value="#66aadd"/>
+      
+      <!-- Variable definitions -->
+      
+      <Group description="Body">
+        <Variable name="body.background" description="Background" color="$(body.background.color)" type="background" default="$(color)"  value="$(color)"/>
+        <Variable name="body.background.color" description="Body background color" type="color" default="#000"  value="#1a1e24"/>
+        <Variable name="body.text.font" description="Font" type="font" default="Ubuntu"  value="400 20px Ubuntu, Lora, serif"/>
+        <Variable name="body.text.color" description="Color" type="color" default="#ddd"  value="#a3a9b6"/>
+        <Variable name="body.link.color" description="Link color" type="color" default="#66aadd"  value="$(keycolor)"/>
+      </Group>
+      
+      <Group description="Header" selector=".centered-top-container">
+        <Variable name="header.background" description="Header Background" color="$(header.background.color)" type="background" default="$(color)"  value="$(color)"/>
+        <Variable name="header.background.color" description="Background color" type="color" default="#fff"  value="#0F0F0F"/>
+      </Group>
+      
+      <Group description="Individual Post or Page" selector="body.item-page .widget.Blog">
+        <Variable name="item.action.color" description="Action color" type="color" default="#25a186"  value="$(keycolor)"/>
+        <Variable name="item.action.font" description="Action font" type="font" default="$(openSansSemibold14)"  value="600 14px Ubuntu, sans-serif"/>
+      </Group>
+   */]]>
   </b:skin>
+  
+  <!-- Main styles -->
+  <style class="main-style">
+:root {
+  --bg-body-200: #1A1E24;
+  --bg-body-100: #161A1F;
+  --text: #BBC5D3;
+  --text-200: #99a1ad;
+  --text-100: #727881;
+  --text-50: #1e242b;
+  --container-200: #2B313B;
+  --container-100: #262C34;
+  --main-color: #66aadd;
+  --second-color: #c7d;
+  --third-color: #9c7;
+  --fourth-color: #d67;
+  --Blogger: #fe6602;
+  --Js: #ec7;
+  --CSS: #0096E6;
+  --standard-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #484c54 #1e2227;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1e2227;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #484c54;
+  border-radius: 10px;
+  border: 10px solid #000000;
+}
+
+body {
+  background: var(--bg-body-200);
+  font-family: "Ubuntu";
+  color: var(--text);
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--main-color);
+}
+
+.i {
+  stroke-width: var(--i-stroke, 2);
+  width: var(--i-size, 18px);
+  height: var(--i-size, 18px);
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  margin-right: 3px;
+}
+
+/* Custom Icons */
+.i-Search,
+.i-Blogger {
+  fill: currentColor;
+  stroke-width: 0;
+}
+
+
+/*---------------- Navigation section ----------------*/
+
+.nav__wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav,
+.nav__menu,
+.nav__list {
+  display: flex;
+}
+
+.nav {
+  justify-content: space-between;
+  max-width: var(--standard-width);
+  margin: auto
+}
+
+.nav__home {
+  align-self: center;
+  margin-right: 1rem;
+}
+
+.nav__home .nav__link {
+  display: flex;
+  align-items: center;
+}
+
+.nav__home .nav__link:hover {
+  color: white;
+}
+
+.nav__link svg {
+  height: 22px;
+  width: 22px;
+  margin-right: .4rem;
+}
+
+.nav__list {
+  background: var(--container-100);
+  color: var(--text);
+  border-radius: 2rem;
+  list-style: none;
+  padding: .8rem;
+}
+
+.nav__link {
+  transition-property: color, text-shadow;
+  transition-duration: .3s;
+}
+
+.nav__link.Blogger--active,
+.nav__link.Blogger:hover {
+  color: var(--Blogger);
+  text-shadow: 0 0 23px var(--Blogger);
+}
+
+.nav__link.JavaScript--active,
+.nav__link.JavaScript:hover {
+  color: var(--Js);
+  text-shadow: 0 0 23px var(--Js);
+}
+
+.nav__link.CSS--active,
+.nav__link.CSS:hover {
+  color: var(--CSS);
+  text-shadow: 0 0 23px var(--CSS);
+}
+
+.nav__item {
+  padding: 0 1rem
+}
+
+.nav__search {
+  align-self: center;
+}
+
+.nav__search button {
+  cursor: pointer;
+  color: var(--text);
+  background: none;
+  border: none;
+}
+
+.nav__search-icon {
+  height: 22px;
+  width: 22px;
+  stroke-width: 3
+}
+
+/*---------------- Header section ----------------*/
+
+.header {
+  background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 700px;
+  width: 100%;
+  position: relative;
+}
+
+.header__inner {
+  max-width: 600px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.header__title--blog {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.header__title--description {
+  color: var(--text-200);
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.header__shape {
+  background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYGGZVFg87OppGACmtr4408xeeOoRM3UNAXNts8xoSVLIwTvLIbpYx8yawFb3UfH1SRs-XG4Eg3mppqY5odwEzJrZ-VAtCfYFsoSUjbyaJC1Z2aa3aqd0U-sc16MSjzymQIOlhr54vlkZBNdvVxsFHYTCsU6zCbbcCK8GTG67M71tWrVXWVryAZ6ZCjsPF/s0/Standard.webp);
+  background-size: cover;
+  height: 290px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+/*---------------- Main section ----------------*/
+
+.main {
+  margin-top: 6rem;
+}
+
+.main__content, .section {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--standard-width);
+}
+
+/*---------------- Search Content ----------------*/
+
+.main__title {
+  margin: 3rem 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.label__view .main__section {
+  grid-auto-flow: row;
+  grid-auto-columns: 1fr;
+}
+
+.footer {
+  background: var(--bg-body-100);
+  color: var(--text-100);
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.footer__content {
+  max-width: var(--standard-width);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 1rem;
+}
+
+.footer__left {
+  min-height: 200px;
+}
+
+.footer__right {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__bottom {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid var(--text-50);
+  padding-top: 2rem;
+}
+
+/* @media (min-width: 300px) {
+  .nav__home {
+    display: none;
+  }
+
+  .nav__button {
+    display: block;
+  }
+
+  .nav__checkbox:checked~.nav__home {
+    display: block;
+  }
+}
+
+@media (min-width: 500px) {
+  .newestpost__content {
+    margin: 0 10px 0 1rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .nav__button {
+    display: none;
+  }
+
+  .nav__search {
+    justify-self: end;
+  }
+
+  .nav__list,
+  .nav__home,
+  .nav__search {
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .item__view .main {
+    display: grid;
+    grid-template-columns: 1fr 940px 1fr;
+    gap: 2rem;
+  }
+
+  .sidebar__container {
+    justify-self: end;
+  }
+
+  .pager-button {
+    width: auto;
+  }
+} */
+  </style>
+
+  <!-- HomePage styles -->
+  <b:if cond='data:view.isHomepage'>
+    <style class="new-posts">
+      /*---------------- Posts section ----------------*/
+  
+      .posts__header {
+        margin: 4rem 0;
+      }
+  
+      .posts__title {
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+      }
+  
+      .posts__title .i-Star {
+        width: 32px;
+        height: 32px;
+      }
+  
+      .posts__inner {
+        display: flex;
+        gap: 1rem;
+      }
+  
+      .post {
+        max-width: 280px;
+        width: 100%;
+      }
+  
+      .post__image {
+        border-radius: 8px;
+        transition-property: border;
+        transition-duration: .3s;
+        border: 2px solid transparent;
+      }
+  
+      .post__image:hover {
+        border: 2px solid;
+      }
+  
+      .post__title {
+        font-size: 1em;
+        font-weight: normal;
+        text-align: center;
+        padding: 0 .5rem;
+      }
+  
+      .posts__footer {
+        margin: 2rem 0 6rem 0;
+        text-align: center;
+      }
+  
+      .posts__link {
+        overflow: hidden;
+        width: auto;
+        display: inline-block;
+      }
+  
+      .posts__button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background: none;
+        border: 1px solid var(--text-200);
+        color: var(--text-200);
+        padding: .4rem .9rem;
+        font-size: 1.2em;
+        border-radius: .7rem;
+        margin: auto;
+        transition-duration: .2s;
+      }
+  
+      .posts__button:hover {
+        background: var(--text-100);
+        color: var(--bg-body-200);
+        border-color: var(--text-100);
+      }
+  
+      .posts__button:active {
+        transform: translateY(2px);
+      }
+  
+      .posts__link:hover {
+        text-decoration: none;
+      }
+  
+      /*---------------- Label section ----------------*/
+  
+      .main__section {
+        border: 1px solid var(--text-100);
+        border-radius: 1rem;
+        padding: 2.5rem;
+        position: relative;
+      }
+  
+      .main__content-title {
+        top: -39px;
+        position: absolute;
+        display: flex;
+        left: 16px;
+      }
+  
+      .main__content--logo {
+        background: var(--bg-body-200);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 1.5rem;
+      }
+  
+      .main__content--logo .i {
+        width: 40px;
+        height: auto;
+        margin-bottom: .2rem;
+      }
+  
+      .main__content-text {
+        font-size: .9em;
+        color: var(--text-200);
+      }
+  
+      .main__content-inner {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+      }
+  
+      .main__content--post {
+        background: var(--container-200);
+        border-radius: .5rem;
+        overflow: hidden;
+      }
+  
+      .main__content--post-inner {
+        padding: 0 1rem 1rem;
+      }
+  
+      .main__content--read {
+        text-align: right;
+        padding: 0 1rem 1rem 0;
+      }
+  
+      .main__content--read .i {
+        transition-property: transform;
+        transition-duration: .2s;
+      }
+  
+      .main__content--read .i:hover {
+        transform: rotateZ(-90deg);
+      }
+    </style>
+  </b:if>
+
+  <!-- Individual Post styles -->
+  <b:if cond='data:view.isPost'>
+    <style class="post-styles">
+      .section {
+        max-width: 880px;
+      }
+
+      .post__meta .date {
+        display: flex;
+        justify-content: center;
+        color: var(--text-200);
+      }
+      
+      .post__time {
+        margin-left: 4px;
+        text-transform: capitalize;
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+        color: var(--text-200);
+      }
+
+      .breadcrumb__list {
+        display: flex;
+        margin: 3rem 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .breadcrumb__separator {
+        padding: 0 1rem;
+      }
+
+      /* Article */
+      .article img {
+        border-radius: .5rem;
+        display: flex;
+        margin: auto;
+      }
+
+      /* Frst post image */
+      .article header + img {
+        margin: 0 auto 3rem;
+      }
+
+      .article p {
+        line-height: 1.65;
+      }
+
+      .toc {
+        display: none;
+      }
+    </style>
+    <style class="highlight-code">
+      /*---------------- Highlight Code ----------------*/
+
+      pre[data-language]::before {
+        content: attr(data-language);
+        font-weight: 600;
+        text-transform: uppercase;
+        display: none;
+      }
+
+      p code {
+        border: 1px solid var(--text-50);
+        border-radius: 10px;
+        color: var(--text-200);
+        font-size: 13px;
+        padding: 0.14rem 0.4rem;
+        white-space: pre;
+      }
+
+      .hljs {
+        color: var(--text-100);
+        display: block;
+        font-size: 13px;
+        font-family: "Fira Code iScript", monospace;
+        font-weight: 600;
+        overflow-x: auto;
+        padding: 1.5rem 1.2rem;
+        border-radius: 1rem;
+        border: 1px solid var(--text-50);
+        box-shadow: 0 0 11px -5px #0b0b0b;
+      }
+
+      .hljs-comment,
+      .hljs-quote {
+        color: #5c6370;
+        font-style: italic;
+        font-weight: 900;
+      }
+
+      .hljs-doctag,
+      .hljs-keyword,
+      .hljs-formula {
+        color: #c678dd;
+      }
+
+      .hljs-section,
+      .hljs-name,
+      .hljs-selector-tag,
+      .hljs-deletion,
+      .hljs-subst {
+        color: #e06c75;
+      }
+
+      .hljs-literal {
+        color: #56b6c2;
+      }
+
+      .hljs-string,
+      .hljs-regexp,
+      .hljs-addition,
+      .hljs-attribute,
+      .hljs-meta-string {
+        color: #98c379;
+      }
+
+      .hljs-built_in,
+      .hljs-class .hljs-title {
+        color: #e6c07b;
+      }
+
+      .hljs-attr,
+      .hljs-variable,
+      .hljs-template-variable,
+      .hljs-type,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo,
+      .hljs-number {
+        color: #d19a66;
+      }
+
+      .hljs-symbol,
+      .hljs-bullet,
+      .hljs-link,
+      .hljs-meta,
+      .hljs-selector-id,
+      .hljs-title {
+        color: #43464c;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs-link {
+        text-decoration: underline;
+      }
+    </style>
+  </b:if>
+
+  <!-- Comment styles -->
+  <b:if cond='data:view.isPost'>
+    <style class="comment-styles">
+      /*---------------- Comments ----------------*/
+
+      .comments {
+        font-size: 15px;
+      }
+
+      #comment-editor {
+        width: 100%;
+        border: none;
+      }
+
+      .comments-title {
+        margin: 3rem 0;
+        text-transform: capitalize;
+        text-align: center;
+      }
+
+      .comment-block {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .comment-avatar img {
+        border-radius: 50%;
+      }
+
+      .comment-author {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .i-circle-check {
+        height: 13px;
+      }
+
+      .comment-time {
+        color: var(--text-200);
+        font-size: 12px;
+        margin-left: 5px;
+      }
+
+      .comment-content {
+        border: 1px solid var(--text-100);
+        border-radius: 1rem;
+        margin-left: 10px;
+        padding: 10px 1rem;
+      }
+
+      .comment-footer {
+        padding-left: 3rem;
+        width: 100%;
+      }
+
+      .comments-editor {
+        text-align: center;
+      }
+
+      .comment-content,
+      .comments-replies {
+        flex-grow: 1;
+      }
+
+      .comments-replies {
+        padding-left: 3rem;
+      }
+
+      .comment-deleted {
+        border: 1px solid var(--fourth-color);
+      }
+
+      .comment-restore-button {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-color);
+        font-size: 1.2rem;
+        margin: 1rem auto;
+        align-items: center;
+      }
+
+      .comment-restore-button.is-replying {
+        display: flex;
+      }
+
+      .comment-restore-button .i-Comment {
+        margin-right: 5px;
+        transform: rotate(270deg);
+      }
+
+      .comment-reply-button,
+      .comment-delete-button {
+        display: inline-block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 12px;
+        margin: 1rem;
+      }
+
+      .comment-reply-button {
+        color: var(--terciary-color);
+      }
+
+      .comment-delete-button {
+        display: none;
+      }
+
+      #reply-form {
+        margin-left: 3rem;
+      }
+    </style>
+  </b:if>
+
 
   <b:defaultmarkups>
     <b:defaultmarkup type="All">
@@ -384,7 +1172,7 @@
               <a href="/" itemprop="item" class="breadcrumb__link"><span itemprop="name">Home</span></a>
               <meta itemprop="position" content="1" />
             </li>
-            <span class="breadcrumb__separator">›</span>
+            <span class="breadcrumb__separator">/</span>
             <b:if cond="data:post.labels">
               <li class="breadcrumb__item" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
                 <b:with value="data:post.labels.first" var="label">
@@ -396,10 +1184,10 @@
                 </b:with>
                 <meta itemprop="position" content="2" />
               </li>
-              <span class="breadcrumb__separator">›</span>
+              <span class="breadcrumb__separator">/</span>
             </b:if>
             <li class="breadcrumb__item" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-              <span itemprop="headline">
+              <span class="headline" itemprop="headline">
                 <data:post.title />
               </span>
               <meta itemprop="position" content="3" />
@@ -410,16 +1198,14 @@
 
       <!-- Post author and date -->
       <b:includable id="post:header">
-        <div class="post__profile">
-          <img expr:src="data:post.author.authorPhoto.image resizeImage 33"
-            expr:alt='"Foto del author " + data:post.author.name' class="post__profile--img" />
-          <a expr:href="data:post.author.profileUrl" class="profile--name">
-            <data:post.author.name />
-          </a>
-          <time class="post__time">
-            <b:include data='{ icon: "Calendar"}' name="@meteor" />
-            <data:post.date />
-          </time>
+        <div class="post__meta">
+          <div class="date">
+            <b:include name='@meteor' data='{ icon: "Calendar" }' />
+            <span>Fecha de publicación:</span>
+            <time class="post__time">
+              <data:post.date />
+            </time>
+          </div>
         </div>
       </b:includable>
 
@@ -454,6 +1240,7 @@
           <b:switch var="data:icon">
             <b:case value="Arrow" /><path d="m15 10 5 5-5 5M4 4v7a4 4 0 0 0 4 4h12"></path>
             <b:case value="Blogger" /><path d="m24 10-.3-.4-.3-.3c-.5-.3-2.7 0-3.3-.5-.4-.4-.5-1.1-.6-2-.3-2-.4-2-.7-2.6-1-2.3-4-4-5.9-4.2H7.6A7.6 7.6 0 0 0 0 7.6v8.9C0 20.7 3.4 24 7.6 24h8.7c4.2 0 7.6-3.4 7.7-7.6V10ZM7.6 6.2h4.2a1.5 1.5 0 1 1 0 3H7.7c-.8 0-1.5-.7-1.5-1.5S7 6.2 7.7 6.2h-.1Zm8.6 11.6H7.7c-.8 0-1.5-.6-1.5-1.4 0-.8.7-1.5 1.5-1.5h8.6c.8 0 1.4.7 1.4 1.5s-.6 1.4-1.4 1.4h-.1Z" />
+            <b:case value="Calendar" /><path d="M3 10h18M7 3v2m10-2v2M6.2 21h11.6c1.1 0 1.7 0 2.1-.2.4-.2.7-.5.9-.9.2-.4.2-1 .2-2.1V8.2c0-1.1 0-1.7-.2-2.1a2 2 0 0 0-.9-.9c-.4-.2-1-.2-2.1-.2H6.2c-1.1 0-1.7 0-2.1.2a2 2 0 0 0-.9.9C3 6.5 3 7 3 8.2v9.6c0 1.1 0 1.7.2 2.1.2.4.5.7.9.9.4.2 1 .2 2.1.2Z" />
             <b:case value="Home" /><path d="M3 10.8a3 3 0 0 1 1.1-2.3L9.5 4a4 4 0 0 1 5 0L20 8.5a3 3 0 0 1 1.1 2.3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7.2Z" /><path d="M15 21v-4a3 3 0 1 0-6 0v4" />
             <b:case value="Posts" /><path d="M2 6v13a2 2 0 0 0 4 0V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H4m7-13h6m-6 4h6m-6 4h6"></path>
             <b:case value="Star" /><path d="M11.3 4.4c.2-.5.3-.8.5-.8.1-.1.3-.1.4 0 .2 0 .3.3.5.8l1.9 4.1.1.3.2.2h.3l4.5.5c.6 0 .9 0 1 .2.1.1.2.3.1.4 0 .2-.2.4-.6.8l-3.4 3-.2.3v.5l1 4.4v1l-.4.3-.9-.4-3.9-2.3-.3-.1h-.2l-.3.1-4 2.3-.8.4a.5.5 0 0 1-.4-.3v-1l1-4.4v-.5c0-.1 0-.2-.2-.3l-3.4-3c-.4-.4-.6-.6-.6-.8l.1-.4 1-.2L8.8 9H9l.2-.2.1-.3 1.9-4Z" />
@@ -468,7 +1255,7 @@
             <nav>
               <section class="toc_content">
                 <header>
-                  <h2 class="toc__title">Índide de contenidos</h2>
+                  <h2 class="toc__title">Índice de Contenidos</h2>
                 </header>
                 <ul id="toc__list"></ul>
               </section>
@@ -483,7 +1270,7 @@
           <b:if cond="data:post.allowNewComments">
             <div id="comment-form">
               <div class="comment-iframe">
-                <iframe id="comment-editor" expr:src='data:post.commentFormIframeSrc params { skin: "notable" }'
+                <iframe id="comment-editor" title="Comentarios" expr:src='data:post.commentFormIframeSrc params { skin: "notable" }'
                   height="66" />
               </div>
             </div>
@@ -627,7 +1414,7 @@
               </b:if>
             </b:tag>
             <time class="comment-time">
-              <data:comment.timestamp />
+              Escrito el <data:comment.timestamp />
             </time>
           </div>
           <p>
@@ -646,7 +1433,7 @@
           <span expr:class="data:comment.adminClass">
             <a class="comment-delete-button" expr:href="data:comment.deleteUrl">
               <!-- <b:eval expr="data:texts.delete ?: data:messages.deleteComment" /> -->
-              <b:include name="@meteor" data='{ icon: "Delete" }' /> Eliminar
+              Eliminar
             </a>
           </span>
         </div>
@@ -717,9 +1504,11 @@
           <b:if cond="not data:view.isPreview and data:post.allowComments">
             <h2 class="comments-title">
               ←
-              <b:message name="messages.numberOfComments">
-                <b:param expr:value="data:post.numberOfComments" name="numComments" />
-              </b:message>
+              <b:if cond="data:post.numberOfComments > 0">
+                <data:post.numberOfComments /> Comentarios
+              <b:else/>
+                Soyez le premier
+              </b:if>
               →
             </h2>
             <div class="comments" id="comments">
@@ -763,7 +1552,6 @@
           <li class="nav__item">
             <a 
               expr:href='(data:view.search.label != "Blogger") ? "/search/label/Blogger" : "#"'
-              expr:title='(data:view.search.label == "Blogger") ? "Subir" : ""'
               expr:class='"nav__link " + (data:view.search.label == "Blogger" ? "Blogger--active" : "Blogger")'>
               Blogger
             </a>
@@ -771,14 +1559,12 @@
           <li class="nav__item">
             <a 
               expr:href='(data:view.search.label != "JavaScript") ? "/search/label/JavaScript" : "#"'
-              expr:title='(data:view.search.label == "JavaScript") ? "Subir" : ""'
               expr:class='"nav__link " + (data:view.search.label == "JavaScript" ? "JavaScript--active" : "JavaScript")'>
               JavaScript
             </a>
           </li>
           <li class="nav__item">
             <a 
-              expr:title='(data:view.search.label == "CSS") ? "Subir" : ""'
               expr:href='(data:view.search.label != "CSS") ? "/search/label/CSS" : "#"'
               expr:class='"nav__link " + (data:view.search.label == "CSS" ? "CSS--active" : "CSS")'>CSS              
             </a>
