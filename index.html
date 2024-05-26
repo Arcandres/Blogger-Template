@@ -9,382 +9,451 @@
 
 <head>
   <meta expr:charset="data:blog.encoding" />
+  <meta content="blogger" name="generator" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta expr:content='data:view.isMultipleItems ? "website" : "article"' property='og:type' />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content='dark' name='color-scheme' />
+
   <!-- Titulo principal del Blog o website -->
-  <title>
+  <b:if cond='data:view.isError'>
+    <title>Página no encontrada</title>
+  <b:elseif cond='data:view.isLabelSearch' />
+    <title>Publicaciones por etiqueta: <data:blog.pageName /></title>
+  <b:elseif cond='data:view.isSearch' />
+    <title>Mostrando todas las publicaciones <b:if cond="data:blog.searchQuery">que coincidan con: <data:blog.searchQuery /></b:if></title>
+  <b:else cond='data:view.isPost'/>
+    <title><data:view.title.escaped /></title>
+  <b:else/>
     <data:view.title.escaped />
-  </title>
+  </b:if>
+
   <meta expr:content="data:view.description.escaped" name="description" />
+  <meta expr:content="data:view.url.canonical.https" property="og:url" />
+  <meta expr:content="data:view.url.canonical.https" name="twitter:url" />
   <link expr:href="data:view.url.canonical" rel="canonical" />
   <link expr:href="data:blog.blogspotFaviconUrl" rel="icon" type="image/x-icon" />
   <link href="https://blogger.googleusercontent.com" rel="preconnect" />
-  <b:if cond='data:view.isLayoutMode'><style>/*<![CDATA[*//*]]>*/</style></b:if>
-  <b:skin class="variables">
-    <![CDATA[ /*
-      <!-- Constants -->
-      <Variable name="keycolor" description="Main Color" type="color" default="#e5f0ee" hideEditor="true"  value="#66aadd"/>
-      
-      <!-- Variable definitions -->
-      
-      <Group description="Body">
-        <Variable name="body.background" description="Background" color="$(body.background.color)" type="background" default="$(color)"  value="$(color)"/>
-        <Variable name="body.background.color" description="Body background color" type="color" default="#000"  value="#1a1e24"/>
-        <Variable name="body.text.font" description="Font" type="font" default="Ubuntu"  value="400 20px Ubuntu, Lora, serif"/>
-        <Variable name="body.text.color" description="Color" type="color" default="#ddd"  value="#a3a9b6"/>
-        <Variable name="body.link.color" description="Link color" type="color" default="#66aadd"  value="$(keycolor)"/>
-      </Group>
-      
-      <Group description="Header" selector=".centered-top-container">
-        <Variable name="header.background" description="Header Background" color="$(header.background.color)" type="background" default="$(color)"  value="$(color)"/>
-        <Variable name="header.background.color" description="Background color" type="color" default="#fff"  value="#0F0F0F"/>
-      </Group>
-      
-      <Group description="Individual Post or Page" selector="body.item-page .widget.Blog">
-        <Variable name="item.action.color" description="Action color" type="color" default="#25a186"  value="$(keycolor)"/>
-        <Variable name="item.action.font" description="Action font" type="font" default="$(openSansSemibold14)"  value="600 14px Ubuntu, sans-serif"/>
-      </Group>
-   */]]>
-  </b:skin>
-  
+
+  <b:if cond='!data:view.isHomepage and !data:view.isSingleItem'>
+    <meta content='noindex,follow' name='robots' />
+  <else />
+    <meta content='max-snippet:-1, max-image-preview:large, max-video-preview:-1' name='robots' />
+  </b:if>
+
+  <b:if cond="data:view.isPost and data:view.featuredImage">
+    <link expr:href="data:view.featuredImage" rel="image_src" />
+    <meta expr:content="data:view.featuredImage" name="twitter:image" />
+    <meta expr:content="data:view.featuredImage" property="og:image" />
+  </b:if>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "<data:blog.title/>",
+      "url": "<data:blog.homepageUrl.canonical/>",
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "<data:blog.homepageUrl.canonical/>search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <b:if cond='data:view.isLayoutMode'>
+    <b:skin><![CDATA[
+        <!-- Constants -->
+        <Variable name="keycolor" description="Main Color" type="color" default="#e5f0ee" hideEditor="true"  value="#66aadd"/>
+        
+        <!-- Variable definitions -->
+        
+        <Group description="Body">
+          <Variable name="body.background" description="Background" color="$(body.background.color)" type="background" default="$(color)"  value="$(color)"/>
+          <Variable name="body.background.color" description="Body background color" type="color" default="#000"  value="#1a1e24"/>
+          <Variable name="body.text.font" description="Font" type="font" default="Ubuntu"  value="400 20px Ubuntu, Lora, serif"/>
+          <Variable name="body.text.color" description="Color" type="color" default="#ddd"  value="#a3a9b6"/>
+          <Variable name="body.link.color" description="Link color" type="color" default="#66aadd"  value="$(keycolor)"/>
+        </Group>
+        <Group description="Header" selector=".centered-top-container">
+          <Variable name="header.background" description="Header Background" color="$(header.background.color)"
+            type="background" default="$(color)" value="$(color)" />
+          <Variable name="header.background.color" description="Background color" type="color" default="#fff" value="#0F0F0F" />
+        </Group>
+        
+        <Group description="Individual Post or Page" selector="body.item-page .widget.Blog">
+          <Variable name="item.action.color" description="Action color" type="color" default="#25a186" value="$(keycolor)" />
+          <Variable name="item.action.font" description="Action font" type="font" default="$(openSansSemibold14)"
+            value="600 14px Ubuntu, sans-serif" />
+        </Group>
+        ]]></b:skin><style>/*<![CDATA[*//*]]>*/</style>
+  </b:if>
+
   <!-- Main styles -->
-  <style class="main-style">
-:root {
-  --bg-body-200: #1A1E24;
-  --bg-body-100: #161A1F;
-  --text: #BBC5D3;
-  --text-200: #99a1ad;
-  --text-100: #727881;
-  --text-50: #1e242b;
-  --container-200: #2B313B;
-  --container-100: #262C34;
-  --main-color: #66aadd;
-  --second-color: #c7d;
-  --third-color: #9c7;
-  --fourth-color: #d67;
-  --Blogger: #fe6602;
-  --Js: #ec7;
-  --CSS: #0096E6;
-  --standard-width: 1200px;
-}
+  <style class="general">
+    :root {
+      --bg-body-200: #1A1E24;
+      --bg-body-100: #161A1F;
+      --text: #BBC5D3;
+      --text-200: #99a1ad;
+      --text-100: #727881;
+      --text-50: #1e242b;
+      --container-200: #2B313B;
+      --container-100: #262C34;
+      --main-color: #66aadd;
+      --second-color: #c7d;
+      --third-color: #9c7;
+      --fourth-color: #d67;
+      --Blogger: #fe6602;
+      --Js: #ec7;
+      --CSS: #0096E6;
+      --standard-width: 1200px;
+    }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #484c54 #1e2227;
-}
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #484c54 #1e2227;
+    }
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 11px;
-}
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 11px;
+    }
 
-*::-webkit-scrollbar-track {
-  background: #1e2227;
-}
+    *::-webkit-scrollbar-track {
+      background: #1e2227;
+    }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #484c54;
-  border-radius: 10px;
-  border: 10px solid #000000;
-}
+    *::-webkit-scrollbar-thumb {
+      background-color: #484c54;
+      border-radius: 10px;
+      border: 10px solid #000000;
+    }
 
-body {
-  background: var(--bg-body-200);
-  font-family: "Ubuntu";
-  color: var(--text);
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
+    body {
+      background: var(--bg-body-200);
+      font-family: "Ubuntu";
+      color: var(--text);
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
 
-img {
-  max-width: 100%;
-}
+    img {
+      max-width: 100%;
+    }
 
-a {
-  color: var(--text-color);
-  text-decoration: none;
-}
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
 
-a:hover {
-  color: var(--main-color);
-}
+    a:hover {
+      color: var(--main-color);
+    }
 
-.i {
-  stroke-width: var(--i-stroke, 2);
-  width: var(--i-size, 18px);
-  height: var(--i-size, 18px);
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  margin-right: 3px;
-}
+    .i {
+      stroke-width: var(--i-stroke, 2);
+      width: var(--i-size, 18px);
+      height: var(--i-size, 18px);
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      margin-right: 3px;
+    }
 
-/* Custom Icons */
-.i-Search,
-.i-Blogger {
-  fill: currentColor;
-  stroke-width: 0;
-}
+    /* Custom Icons */
+    .i-Search,
+    .i-Blogger {
+      fill: currentColor;
+      stroke-width: 0;
+    }
 
+    /* Header */
+    .header__title {
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
 
-/*---------------- Navigation section ----------------*/
+    .header__description {
+      color: var(--text-200);
+      font-size: 1em;
+      font-weight: normal;
+    }
 
-.nav__wrapper {
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-}
+    /* Breadcrumbs */
+    .breadcrumbs {
+      color: var(--text-200);
+    }
 
-.nav,
-.nav__menu,
-.nav__list {
-  display: flex;
-}
+    .breadcrumb__list {
+      display: flex;
+      margin: 3rem 0;
+      padding: 0;
+      list-style: none;
+    }
 
-.nav {
-  justify-content: space-between;
-  max-width: var(--standard-width);
-  margin: auto
-}
+    .breadcrumb__separator {
+      padding: 0 1rem;
+    }
 
-.nav__home {
-  align-self: center;
-  margin-right: 1rem;
-}
+    .post {
+      line-height: 1.3;
+    }
+  </style>
+  <style class="nav-styles">
+    .nav__wrapper {
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
 
-.nav__home .nav__link {
-  display: flex;
-  align-items: center;
-}
+    .nav,
+    .nav__menu,
+    .nav__list {
+      display: flex;
+    }
 
-.nav__home .nav__link:hover {
-  color: white;
-}
+    .nav {
+      justify-content: space-between;
+      max-width: var(--standard-width);
+      margin: auto
+    }
 
-.nav__link svg {
-  height: 22px;
-  width: 22px;
-  margin-right: .4rem;
-}
+    .nav__home {
+      align-self: center;
+      margin-right: 1rem;
+    }
 
-.nav__list {
-  background: var(--container-100);
-  color: var(--text);
-  border-radius: 2rem;
-  list-style: none;
-  padding: .8rem;
-}
+    .nav__home .nav__link {
+      display: flex;
+      align-items: center;
+    }
 
-.nav__link {
-  transition-property: color, text-shadow;
-  transition-duration: .3s;
-}
+    .nav__home .nav__link:hover {
+      color: white;
+    }
 
-.nav__link.Blogger--active,
-.nav__link.Blogger:hover {
-  color: var(--Blogger);
-  text-shadow: 0 0 23px var(--Blogger);
-}
+    .nav__link svg {
+      height: 22px;
+      width: 22px;
+      margin-right: .4rem;
+    }
 
-.nav__link.JavaScript--active,
-.nav__link.JavaScript:hover {
-  color: var(--Js);
-  text-shadow: 0 0 23px var(--Js);
-}
+    .nav__list {
+      background: var(--container-100);
+      color: var(--text);
+      border-radius: 2rem;
+      list-style: none;
+      padding: .8rem;
+    }
 
-.nav__link.CSS--active,
-.nav__link.CSS:hover {
-  color: var(--CSS);
-  text-shadow: 0 0 23px var(--CSS);
-}
+    .nav__link {
+      transition-property: color, text-shadow;
+      transition-duration: .3s;
+    }
 
-.nav__item {
-  padding: 0 1rem
-}
+    .nav__link.Blogger--active,
+    .nav__link.Blogger:hover {
+      color: var(--Blogger);
+      text-shadow: 0 0 23px var(--Blogger);
+    }
 
-.nav__search {
-  align-self: center;
-}
+    .nav__link.JavaScript--active,
+    .nav__link.JavaScript:hover {
+      color: var(--Js);
+      text-shadow: 0 0 23px var(--Js);
+    }
 
-.nav__search button {
-  cursor: pointer;
-  color: var(--text);
-  background: none;
-  border: none;
-}
+    .nav__link.CSS--active,
+    .nav__link.CSS:hover {
+      color: var(--CSS);
+      text-shadow: 0 0 23px var(--CSS);
+    }
 
-.nav__search-icon {
-  height: 22px;
-  width: 22px;
-  stroke-width: 3
-}
+    .nav__item {
+      padding: 0 1rem
+    }
 
-/*---------------- Header section ----------------*/
+    .nav__search {
+      align-self: center;
+    }
 
-.header {
-  background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 700px;
-  width: 100%;
-  position: relative;
-}
+    .nav__search button {
+      cursor: pointer;
+      color: var(--text);
+      background: none;
+      border: none;
+    }
 
-.header__inner {
-  max-width: 600px;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  margin: 0 auto;
-  z-index: 10;
-}
+    .nav__search-icon {
+      height: 22px;
+      width: 22px;
+      stroke-width: 3
+    }
+  </style>
+  <style class="header-styles">
+    .header {
+      background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 700px;
+      width: 100%;
+      position: relative;
+    }
 
-.header__title--blog {
-  font-size: 2em;
-  font-weight: 700;
-}
+    .header__inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      z-index: 10;
+    }
 
-.header__title--description {
-  color: var(--text-200);
-  font-size: 1em;
-  font-weight: normal;
-}
+    .header__title--term {
+      color: var(--text-200);
+      font-size: 2rem;
+      text-transform: capitalize;
+    }
 
-.header__shape {
-  background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYGGZVFg87OppGACmtr4408xeeOoRM3UNAXNts8xoSVLIwTvLIbpYx8yawFb3UfH1SRs-XG4Eg3mppqY5odwEzJrZ-VAtCfYFsoSUjbyaJC1Z2aa3aqd0U-sc16MSjzymQIOlhr54vlkZBNdvVxsFHYTCsU6zCbbcCK8GTG67M71tWrVXWVryAZ6ZCjsPF/s0/Standard.webp);
-  background-size: cover;
-  height: 290px;
-  position: absolute;
-  width: 100%;
-  bottom: -16px;
-}
+    .header__shape {
+      background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYGGZVFg87OppGACmtr4408xeeOoRM3UNAXNts8xoSVLIwTvLIbpYx8yawFb3UfH1SRs-XG4Eg3mppqY5odwEzJrZ-VAtCfYFsoSUjbyaJC1Z2aa3aqd0U-sc16MSjzymQIOlhr54vlkZBNdvVxsFHYTCsU6zCbbcCK8GTG67M71tWrVXWVryAZ6ZCjsPF/s0/Standard.webp);
+      background-size: cover;
+      height: 290px;
+      position: absolute;
+      width: 100%;
+      bottom: -16px;
+    }
 
-/*---------------- Main section ----------------*/
+  </style>
+  <style class="main-styles">
+    /*---------------- Main section ----------------*/
 
-.main {
-  margin-top: 6rem;
-}
+    .main {
+      margin-top: 6rem;
+    }
 
-.main__content, .section {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--standard-width);
-}
+    .main__content, .section {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: var(--standard-width);
+    }
 
-/*---------------- Search Content ----------------*/
+    /*---------------- Search Content ----------------*/
 
-.main__title {
-  margin: 3rem 0;
-  font-size: 1.3rem;
-  text-align: center;
-}
+    .main__title {
+      margin: 3rem 0;
+      font-size: 1.3rem;
+      text-align: center;
+    }
 
-.label__view .main__section {
-  grid-auto-flow: row;
-  grid-auto-columns: 1fr;
-}
+    .label__view .main__section {
+      grid-auto-flow: row;
+      grid-auto-columns: 1fr;
+    }
 
-.footer {
-  background: var(--bg-body-100);
-  color: var(--text-100);
-  margin-top: 3rem;
-  padding: 1rem;
-}
+    /* @media (min-width: 300px) {
+      .nav__home {
+        display: none;
+      }
 
-.footer__content {
-  max-width: var(--standard-width);
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 1rem;
-}
+      .nav__button {
+        display: block;
+      }
 
-.footer__left {
-  min-height: 200px;
-}
+      .nav__checkbox:checked~.nav__home {
+        display: block;
+      }
+    }
 
-.footer__right {
-  display: flex;
-  justify-content: space-evenly;
-}
+    @media (min-width: 500px) {
+      .newestpost__content {
+        margin: 0 10px 0 1rem;
+      }
+    }
 
-.footer ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+    @media (min-width: 800px) {
+      .nav__button {
+        display: none;
+      }
 
-.footer__bottom {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  border-top: 1px solid var(--text-50);
-  padding-top: 2rem;
-}
+      .nav__search {
+        justify-self: end;
+      }
 
-/* @media (min-width: 300px) {
-  .nav__home {
-    display: none;
-  }
+      .nav__list,
+      .nav__home,
+      .nav__search {
+        display: block;
+      }
+    }
 
-  .nav__button {
-    display: block;
-  }
+    @media (min-width: 1280px) {
+      .item__view .main {
+        display: grid;
+        grid-template-columns: 1fr 940px 1fr;
+        gap: 2rem;
+      }
 
-  .nav__checkbox:checked~.nav__home {
-    display: block;
-  }
-}
+      .sidebar__container {
+        justify-self: end;
+      }
 
-@media (min-width: 500px) {
-  .newestpost__content {
-    margin: 0 10px 0 1rem;
-  }
-}
+      .pager-button {
+        width: auto;
+      }
+    } */
+  </style>
+  <style class="footer-styles">
+    .footer {
+      background: var(--bg-body-100);
+      color: var(--text-200);
+      margin-top: 3rem;
+      padding: 1rem;
+    }
 
-@media (min-width: 800px) {
-  .nav__button {
-    display: none;
-  }
+    .footer__content {
+      max-width: var(--standard-width);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 1rem;
+    }
 
-  .nav__search {
-    justify-self: end;
-  }
+    .footer__left {
+      min-height: 200px;
+    }
 
-  .nav__list,
-  .nav__home,
-  .nav__search {
-    display: block;
-  }
-}
+    .footer__right {
+      display: flex;
+      justify-content: space-evenly;
+    }
 
-@media (min-width: 1280px) {
-  .item__view .main {
-    display: grid;
-    grid-template-columns: 1fr 940px 1fr;
-    gap: 2rem;
-  }
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-  .sidebar__container {
-    justify-self: end;
-  }
+    .footer__bottom {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      border-top: 1px solid var(--text-50);
+      padding-top: 2rem;
+    }
 
-  .pager-button {
-    width: auto;
-  }
-} */
   </style>
 
   <!-- HomePage styles -->
@@ -436,7 +505,7 @@ a:hover {
       }
   
       .posts__footer {
-        margin: 2rem 0 6rem 0;
+        margin: 3rem 0 6rem 0;
         text-align: center;
       }
   
@@ -511,7 +580,7 @@ a:hover {
   
       .main__content-inner {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 2.5rem;
       }
   
@@ -594,7 +663,8 @@ a:hover {
         -moz-osx-font-smoothing: grayscale;
       }
 
-      .icon-HTML:before {
+      .icon-HTML:before,
+      .icon-Desarrollo-Web:before {
         content: "\ea80";
       }
       .icon-CSS:before {
@@ -629,22 +699,6 @@ a:hover {
         text-transform: capitalize;
       }
 
-      /* Breadcrumbs */
-      .breadcrumbs {
-        color: var(--text-200);
-      }
-
-      .breadcrumb__list {
-        display: flex;
-        margin: 3rem 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .breadcrumb__separator {
-        padding: 0 1rem;
-      }
-
       .article {
         max-width: 880px;
         width: 100%;
@@ -654,7 +708,7 @@ a:hover {
       .article img {
         border-radius: .5rem;
         display: flex;
-        margin: auto;
+        margin: 3rem auto;
       }
 
       /* Frst post image */
@@ -699,17 +753,19 @@ a:hover {
       #toc__list h6 {
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: normal;
         margin: .8rem 0;
       }
 
-      #toc__list h2 + h3, #toc__list h3 + h4 {
-        padding-left: 1rem;
+      #toc__list h2{
+        font-size: 14px;
       }
 
-      #toc__list h2 + h3::before, 
+      #toc__list h2 + h3::before,
+      #toc__list h3 + h3::before,
       #toc__list h3 + h4::before,
+      #toc__list h4 + h4::before,
       #toc__list h4 + h5::before {
         content: "-";
         color: #3f506a;
@@ -723,6 +779,16 @@ a:hover {
     </style>
     <style class="highlight-code">
       /*---------------- Highlight Code ----------------*/
+
+      @font-face {
+        font-family: 'Fira Code iScript';
+        src: url('https://cdn.jsdelivr.net/gh/Arcandres/assets@master/font/FiraCodeiScript-Bold.woff2');
+      }
+
+      @font-face {
+        font-family: 'Fira Code iScript Italic';
+        src: url('https://cdn.jsdelivr.net/gh/Arcandres/assets@master/font/FiraCodeiScript-Italic.woff2');
+      }
 
       pre[data-language]::before {
         content: attr(data-language);
@@ -744,7 +810,6 @@ a:hover {
         display: block;
         font-size: 13px;
         font-family: "Fira Code iScript", monospace;
-        font-weight: 600;
         overflow-x: auto;
         padding: 1.5rem 1.2rem;
         border-radius: 1rem;
@@ -755,8 +820,8 @@ a:hover {
       .hljs-comment,
       .hljs-quote {
         color: #5c6370;
-        font-style: italic;
-        font-weight: 900;
+        font-family: "Fira Code iScript Italic";
+        font-weight: bold;
       }
 
       .hljs-doctag,
@@ -871,81 +936,77 @@ a:hover {
         color: var(--text-100);
       }
     </style>
-  </b:if>
-
-  <!-- Comment styles -->
-  <b:if cond='data:view.isPost'>
     <style class="comment-styles">
       /*---------------- Comments ----------------*/
-
+    
       .comments {
         font-size: 15px;
       }
-
+    
       #comment-editor {
         width: 100%;
         border: none;
       }
-
+    
       .comments-title {
         margin: 3rem 0;
         text-transform: capitalize;
         text-align: center;
       }
-
+    
       .comment-block {
         display: flex;
         flex-flow: row wrap;
       }
-
+    
       .comment-avatar img {
         border-radius: 50%;
       }
-
+    
       .comment-author {
         font-size: 14px;
         font-weight: 600;
       }
-
+    
       .i-circle-check {
         height: 13px;
       }
-
+    
       .comment-time {
         color: var(--text-200);
         font-size: 12px;
         margin-left: 5px;
       }
-
+    
       .comment-content {
         border: 1px solid var(--text-100);
         border-radius: 1rem;
         margin-left: 10px;
         padding: 10px 1rem;
       }
-
+    
       .comment-footer {
         padding-left: 3rem;
         width: 100%;
       }
-
+    
       .comments-editor {
         text-align: center;
       }
-
+    
       .comment-content,
       .comments-replies {
         flex-grow: 1;
       }
-
+    
       .comments-replies {
         padding-left: 3rem;
       }
-
+    
       .comment-deleted {
         border: 1px solid var(--fourth-color);
       }
-
+    
       .comment-restore-button {
         display: none;
         background: none;
@@ -956,7 +1017,7 @@ a:hover {
         margin: 1rem auto;
         align-items: center;
       }
-
+    
       .comment-restore-button.is-replying {
         display: flex;
         border: 1px solid var(--third-color);
@@ -965,17 +1026,17 @@ a:hover {
         border-radius: .5rem;
         transition: all .2s;
       }
-
+    
       .comment-restore-button.is-replying:hover {
         background: var(--third-color);
         color: var(--bg-body-200);
       }
-
+    
       .comment-restore-button .i-Comment {
         margin-right: 5px;
         transform: scaleX(-1);
       }
-
+    
       .comment-reply-button,
       .comment-delete-button {
         display: inline-block;
@@ -985,21 +1046,47 @@ a:hover {
         font-size: 12px;
         margin: 1rem;
       }
-
+    
       .comment-reply-button {
         color: var(--terciary-color);
       }
-
+    
       .comment-delete-button {
         display: none;
       }
-
+    
       #reply-form {
         margin-left: 3rem;
       }
     </style>
   </b:if>
 
+  <b:if cond="data:view.isLabelSearch or data:view.isSearch">
+    <style class="main">
+      .main__section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px , 1fr));
+        gap: 1.5rem;
+      }
+
+      .post {
+        line-height: 1.65;
+        background: var(--container-200);
+        border-radius: .5rem;
+        overflow: hidden;
+      }
+
+      .post__inner {
+        padding: 0 1rem 1rem;
+      }
+
+      .posts__nav {
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem 1rem;
+      }
+    </style>
+  </b:if>
 
   <b:defaultmarkups>
     <b:defaultmarkup type="All">
@@ -1139,7 +1226,7 @@ a:hover {
             <b:loop index='i' values='data:posts limit 4' var='post'>
               <article class="post">
                 <a expr:href="data:post.url">
-                  <img expr:src='resizeImage(data:post.featuredImage, 280, "280:160")' expr:alt="data:post.title" class="post__image" />
+                  <img expr:src='resizeImage(data:post.featuredImage, 280, "280:160")' width="280" height="160" expr:alt="data:post.title" class="post__image" />
                 </a>
                 <div class="post__content">
                   <header class="post__header">
@@ -1201,7 +1288,7 @@ a:hover {
           <b:loop values="data:posts" index="i" var="post">
             <b:if cond="data:post.labels any (label => label.name == labelName)">
               <article expr:class='"main__content--post " + data:labelName'>
-                <img expr:src="data:post.featuredImage" expr:alt="data:post.title" />
+                <img expr:src='resizeImage(data:post.featuredImage, 346, "346:180")' width="346" height="180" expr:alt="data:post.title" />
                 <div class="main__content--post-inner">
                   <h3 class="main__content--title" expr:title="data:post.title">
                     <a expr:href="data:post.url"><data:post.title /></a>
@@ -1221,32 +1308,25 @@ a:hover {
 
       <b:includable id="post:loopBySearch">
         <b:if cond="data:posts.first.title">
-          <h2 class="main__title">
-            <b:include name="@meteor" data='{ icon: "Posts"}' /> Publicaciones
-            recientes y/o actualizadas hace poco
-          </h2>
+          <b:include name="breadcrumb" />
           <b:else />
           <h2 class="main__title">
             Al parecer no se encontró nada relacionado...
           </h2>
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_9H1lgMxdRE2QaOWqztdwvGsSUqyhEVfKJ1jztLSGfn4Tnkx-jxnO2l1BWM-m7f4_JrNOteoRteWFcoF7erKegvRXeu3czBBmeG1huEVVz3Fu_yvSj04tR46nJEVLFUFlvJ6Xdu3UV5tkHiIlSi9o0v8blW8Geh-lseaFifDCWXVOapRZnAFhtrdv02Zx/s0/QMHoU66sBXqqLqYvGO.webp" alt="Animated image of everything burning" />
         </b:if>
         <section class="main__section">
           <b:loop values="data:posts" index="i" var="post">
-            <article class="post" expr:style='"background-image: url(" + data:post.featuredImage resizeImage 300 + ")"'>
-              <span class="post__meta" expr:title='"Etiqueta " + data:post.labels.first.name'>
-                <span class="post__tag"><a expr:href="data:post.labels.first.url">
-                    <b:include name="@meteor" data="{ icon: data:post.labels.first.name}" />
-                  </a></span>
-                <time class="post__time">
-                  <b:include name="@meteor" data='{ icon: "Calendar"}' />
-                  <data:post.date />
-                </time>
-              </span>
-              <h3 class="post__title" expr:title="data:post.title">
-                <a expr:href="data:post.url">
-                  <data:post.title />
-                </a>
-              </h3>
+            <article class="post">
+              <img expr:src='resizeImage(data:post.featuredImage, 400, "16:9")' expr:alt="data:post.title" />
+              <div class="post__inner">
+                <h2 class="post__title" expr:title="data:post.title">
+                  <a expr:href="data:post.url">
+                    <data:post.title />
+                  </a>
+                </h2>
+                <p><data:post.snippets.short /></p>
+              </div>
             </article>
           </b:loop>
         </section>
@@ -1255,21 +1335,20 @@ a:hover {
 
       <!-- Pagination -->
       <b:includable id="next:prev">
-        <nav class="posts__nav">
-          <b:if cond="data:newerPageUrl">
-            <a class="posts__nav--link old" expr:href="data:newerPageUrl" expr:title="data:newerPageTitle" rel="next">←
-              Anterior</a>
-            <b:else />
-            <span class="posts__nav--link disabled"></span>
-          </b:if>
-          <a class="posts__nav--link" expr:href="data:blog.homepageUrl">Inicio</a>
-          <b:if cond="data:olderPageUrl">
-            <a class="posts__nav--link new" expr:href="data:olderPageUrl" expr:title="data:olderPageTitle"
-              rel="prev">Siguiente →</a>
-            <b:else />
-            <span class="posts__nav--link disabled"></span>
-          </b:if>
-        </nav>
+        <b:if cond='data:newerPageUrl or data:olderPageUrl'>
+          <nav class="posts__nav">
+            <b:if cond="data:newerPageUrl">
+              <a class="posts__nav--link old" expr:href="data:newerPageUr" expr:title="data:newerPageTitle" rel="next">←
+                Anterior</a>
+              <b:else />
+            </b:if>
+            <b:if cond="data:olderPageUrl">
+              <a class="posts__nav--link new" expr:href="data:olderPageUrl" expr:title="data:olderPageTitle"
+                rel="prev">Siguiente →</a>
+              <b:else />
+            </b:if>
+          </nav>
+        </b:if>
       </b:includable>
 
       <!-- Post pagination -->
@@ -1370,7 +1449,7 @@ a:hover {
         <nav aria-label="Breadcrumb" role="navigation" class="breadcrumbs">
           <ol itemtype="http://schema.org/BreadcrumbList" class="breadcrumb__list">
             <li class="breadcrumb__item" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-              <a href="/" itemprop="item" class="breadcrumb__link"><span itemprop="name">Home</span></a>
+              <a href="/" itemprop="item" class="breadcrumb__link"><span itemprop="name">Inicio</span></a>
               <meta itemprop="position" content="1" />
             </li>
             <span class="breadcrumb__separator">/</span>
@@ -1389,7 +1468,13 @@ a:hover {
             </b:if>
             <li class="breadcrumb__item" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
               <span class="headline" itemprop="headline">
-                <data:post.title />
+                  <b:if cond="data:post.title">
+                    <data:post.title />
+                  <b:else cond="data.view.url.escaped == 'https://the-blogger-developer.blogspot.com/search/'" />
+                    Mostrando todas las publicaciones
+                  <b:else />
+                    <data:blog.pageName />
+                  </b:if>
               </span>
               <meta itemprop="position" content="3" />
             </li>
@@ -1442,6 +1527,7 @@ a:hover {
             <b:case value="Arrow" /><path d="m15 10 5 5-5 5M4 4v7a4 4 0 0 0 4 4h12"></path>
             <b:case value="Blogger" /><path d="m24 10-.3-.4-.3-.3c-.5-.3-2.7 0-3.3-.5-.4-.4-.5-1.1-.6-2-.3-2-.4-2-.7-2.6-1-2.3-4-4-5.9-4.2H7.6A7.6 7.6 0 0 0 0 7.6v8.9C0 20.7 3.4 24 7.6 24h8.7c4.2 0 7.6-3.4 7.7-7.6V10ZM7.6 6.2h4.2a1.5 1.5 0 1 1 0 3H7.7c-.8 0-1.5-.7-1.5-1.5S7 6.2 7.7 6.2h-.1Zm8.6 11.6H7.7c-.8 0-1.5-.6-1.5-1.4 0-.8.7-1.5 1.5-1.5h8.6c.8 0 1.4.7 1.4 1.5s-.6 1.4-1.4 1.4h-.1Z" />
             <b:case value="Calendar" /><path d="M3 10h18M7 3v2m10-2v2M6.2 21h11.6c1.1 0 1.7 0 2.1-.2.4-.2.7-.5.9-.9.2-.4.2-1 .2-2.1V8.2c0-1.1 0-1.7-.2-2.1a2 2 0 0 0-.9-.9c-.4-.2-1-.2-2.1-.2H6.2c-1.1 0-1.7 0-2.1.2a2 2 0 0 0-.9.9C3 6.5 3 7 3 8.2v9.6c0 1.1 0 1.7.2 2.1.2.4.5.7.9.9.4.2 1 .2 2.1.2Z" />
+            <b:case value="code" /><path d="m16 19 7-7-7-7M8 5l-7 7 7 7" />
             <b:case value="Comment" /><path d="M4.3 16.7a9 9 0 1 1 3 3L3 21zM8 12h0m4 0h0m4 0h0" />
             <b:case value="Home" /><path d="M3 10.8a3 3 0 0 1 1.1-2.3L9.5 4a4 4 0 0 1 5 0L20 8.5a3 3 0 0 1 1.1 2.3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7.2Z" /><path d="M15 21v-4a3 3 0 1 0-6 0v4" />
             <b:case value="Link" /><path d="M9 13a5 5 0 0 0 8 1l4-4a1 1 0 0 0-7-7l-2 2m3 6a5 5 0 0 0-8-1l-4 4a1 1 0 0 0 7 7l2-2"></path>
@@ -1724,7 +1810,7 @@ a:hover {
       </b:includable>
     </b:defaultmarkup>
   </b:defaultmarkups>
-</head>
+&lt;!--</head>--&gt;&lt;/head&gt;
 
 <body>
   <!-- Custom classes for each view -->
@@ -1788,31 +1874,33 @@ a:hover {
     <div class="header__inner">
       <b:if cond="data:view.isError">
         <h1 class="header__title">Pagina No Encontrada</h1>
-        <b:elseif cond="data:view.isLabelSearch" />
+      <b:elseif cond="data:view.isLabelSearch" />
         <h1 class="header__title">
-          Contenido relacionado con
-          <data:blog.pageName />
+          Publicaciones organizadas por etiqueta:
         </h1>
-        <b:elseif cond="data:view.isSearch" />
-        <h1 class="header__title">
-          Buscando el siguiente contenido:
-          <data:blog.searchQuery />
-        </h1>
-        <b:elseif cond="data:view.isPost or data:view.isPage" />
+        <span class="header__title--term">
+          # <data:blog.pageName />
+        </span>
+      <b:elseif cond="data:view.isSearch" />
+        <h1 class="header__title"> Buscando contenido relacionado con:</h1>
+        <span class="header__title--term">
+          “<data:blog.searchQuery />”
+        </span>
+      <b:elseif cond="data:view.isPost or data:view.isPage" />
         <h1 class="header__title">
           <data:blog.pageName />
         </h1>
         <p class="header__description">
           <data:view.description.escaped />
         </p>
-        <b:elseif cond="data:view.isHomepage" />
-        <h1 class="header__title--description">
+      <b:elseif cond="data:view.isHomepage" />
+        <span class="header__title">
+          <data:blog.pageTitle />
+        </span>
+        <h1 class="header__description">
           <data:view.description.escaped />
         </h1>
-        <p class="header__title--blog">
-          <data:blog.pageTitle />
-        </p>
-        <b:else />
+      <b:else />
         <data:blog.pageTitle />
       </b:if>
     </div>
@@ -1894,18 +1982,6 @@ a:hover {
     </div>
       <p class="footer__bottom">© 2024 The Blogger Web Developer - Potenciando por Blogger</p>
   </footer>
-  <script>
-  //<![CDATA[
-    (() => {
-      const home = document.querySelector(".nav__home");
-      addEventListener("scroll", () => {
-        scrollY < 538
-          ? home.style.display = "block"
-          : home.style.display = "none";
-      });
-    })();
-  //]]>
-  </script>
   <b:if cond="data:view.isPost">
     <script>
       (() => {
