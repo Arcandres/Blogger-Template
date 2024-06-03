@@ -300,6 +300,24 @@
       width: 22px;
       stroke-width: 3
     }
+
+    .nav__checkbox, .nav__search-popup {
+      display: none;
+    }
+
+    .nav__checkbox:checked ~ .nav__search-popup {
+      display: block;
+    }
+
+    .nav__search-popup {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+    }
+
+
   </style>
   <style class="header-styles">
     .header {
@@ -1823,8 +1841,6 @@
   <!-- Menu de Navegacion -->
   <div class="nav__wrapper">
     <nav class="nav">
-      <!-- <input type="checkbox" class="nav__checkbox" id="open-menu" />
-      <label for="open-menu" class="nav__button" role="button">≡</label> -->
 
       <div class='nav__menu'>
         <div class="nav__home">
@@ -1862,9 +1878,15 @@
 
       <!-- Formulario de busqueda -->
       <div class="nav__search">
-        <button aria-label="Abrir caja de busqueda">
+        <label for="open-search" class="nav__button" role="button">
           <b:include name='@meteor' data='{ icon: "Search" }' />
-        </button>
+        </label>
+        <input type="checkbox" aria-label="Abrir caja de busqueda" class="nav__checkbox" id="open-search" />
+        <div class="nav__search-popup">
+          <form expr:action="data:blog.searchUrl.https" method="get">
+            <input autocomplete="off" class="nav__form" name="q" placeholder="¿Por qué elegir Blogger?" />
+          </form>
+        </div>
       </div>
     </nav>
   </div>
@@ -1882,10 +1904,14 @@
           # <data:blog.pageName />
         </span>
       <b:elseif cond="data:view.isSearch" />
-        <h1 class="header__title"> Buscando contenido relacionado con:</h1>
-        <span class="header__title--term">
-          “<data:blog.searchQuery />”
-        </span>
+        <b:if cond='data:view.url eq "https://the-blogger-developer.blogspot.com/search"'>
+          <h1 class="header__title"> Mostrando todas las publicaciones </h1>
+        <b:else />
+          <h1 class="header__title"> Buscando contenido relacionado con:</h1>
+          <span class="header__title--term">
+            “<data:blog.searchQuery />”
+          </span>
+        </b:if>
       <b:elseif cond="data:view.isPost or data:view.isPage" />
         <h1 class="header__title">
           <data:blog.pageName />
