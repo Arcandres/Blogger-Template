@@ -146,6 +146,13 @@
       padding: 0;
     }
 
+    mark {
+      background: var(--text-200);
+      border-radius: 8px;
+      display: inline-block;
+      padding: 0 5px;
+    }
+
     img {
       max-width: 100%;
     }
@@ -188,6 +195,7 @@
       color: var(--text-200);
       font-size: 1em;
       font-weight: normal;
+      max-width: 640px;
     }
 
     /* Breadcrumbs */
@@ -406,7 +414,6 @@
       margin-left: auto;
       margin-right: auto;
       max-width: var(--standard-width);
-      padding: 0 .5rem;
     }
 
     /*---------------- Search Content ----------------*/
@@ -421,58 +428,6 @@
       grid-auto-flow: row;
       grid-auto-columns: 1fr;
     }
-
-    /* @media (min-width: 300px) {
-      .nav__home {
-        display: none;
-      }
-
-      .nav__button {
-        display: block;
-      }
-
-      .nav__checkbox:checked~.nav__home {
-        display: block;
-      }
-    }
-
-    @media (min-width: 500px) {
-      .newestpost__content {
-        margin: 0 10px 0 1rem;
-      }
-    }
-
-    @media (min-width: 800px) {
-      .nav__button {
-        display: none;
-      }
-
-      .nav__search {
-        justify-self: end;
-      }
-
-      .nav__list,
-      .nav__home,
-      .nav__search {
-        display: block;
-      }
-    }
-
-    @media (min-width: 1280px) {
-      .item__view .main {
-        display: grid;
-        grid-template-columns: 1fr 940px 1fr;
-        gap: 2rem;
-      }
-
-      .sidebar__container {
-        justify-self: end;
-      }
-
-      .pager-button {
-        width: auto;
-      }
-    } */
   </style>
   <style class="footer-styles">
     .footer {
@@ -743,9 +698,8 @@
       /* Container */
       .main {
         margin: 6rem auto 0;
-        display: grid;
-        grid-template-columns: 1fr minmax(880px, 1fr) 1fr;
         max-width: 1300px;
+        padding: 0 1rem;
       }
 
       /* Post */
@@ -780,11 +734,23 @@
       .article p {
         line-height: 1.65;
       }
+
+      @media (min-width: 1300px) {
+        .main {
+          display: grid;
+          grid-template-columns: 1fr minmax(880px, 1fr) 1fr;
+        }
+
+        .sidebar__container {
+          margin-right: 1rem;
+        }
+      }
     </style>
     <style class="sidebar-styles">
       /*---------------- Sidebar section ----------------*/
       .sidebar__container {
         padding-top: 7rem;
+        margin-bottom: 3rem;
       }
 
       .toc {
@@ -804,7 +770,6 @@
         padding: .2rem 1rem;
         border: 1px solid var(--text-100);
         border-radius: 6px;
-        margin-right: 1rem;
       }
 
       #toc__list h2,
