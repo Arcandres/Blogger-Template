@@ -431,7 +431,7 @@
     </style>
     <style class="header-styles">
       .header {
-        background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
+        background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -477,7 +477,7 @@
         height: 290px;
         position: absolute;
         width: 100%;
-        bottom: -16px;
+        bottom: -21px;
       }
 
       @media (min-width: 1000px) {
@@ -748,15 +748,19 @@
     <b:if cond="data:view.isPost">
       <style class="header-styles">
         .header__post--image {
-          background: url(<data:view.featuredImage/>);
-          background-size: auto;
+          background: radial-gradient(
+              circle,
+              rgba(0, 0, 0, 0) 30%,
+              rgb(22 26 31) 100%
+            ),
+            url(<data:view.featuredImage/>);
           position: absolute;
           top: 0;
           width: 100%;
           height: 700px;
           background-size: cover;
-          filter: blur(5px);
-          opacity: 0.15;
+          filter: blur(10px);
+          opacity: 0.1;
         }
       </style>
       <style class="font-icons">
@@ -1220,6 +1224,20 @@
       </style>
     </b:if>
 
+    <!-- Everywhere but Post -->
+    <b:if cond="!data:view.isPost">
+      <style>
+        .header {
+          background: radial-gradient(
+              circle,
+              rgb(255 255 255 / 2%) 0,
+              rgb(15 15 20) 100%
+            ),
+            url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
+        }
+      </style>
+    </b:if>
+
     <b:if cond="data:view.isLabelSearch or data:view.isSearch">
       <style class="main">
         .main__section {
@@ -1450,7 +1468,9 @@
         <b:includable id="post:body">
           <article class="article" id="article">
             <header>
-              <b:include name="post:header" />
+              <b:if cond="data:view.isPost">
+                <b:include name="post:header" />
+              </b:if>
               <b:include name="breadcrumb" />
             </header>
             <data:post.body />
