@@ -268,15 +268,10 @@
         margin: 3rem 0;
         padding: 0;
         list-style: none;
-        justify-content: center;
       }
 
       .breadcrumb__separator {
         padding: 0 1rem;
-      }
-
-      .headline {
-        text-decoration: line-through;
       }
 
       .post {
@@ -554,7 +549,7 @@
       }
 
       .footer__tools .i-Code {
-        height: 16px;
+        height: 17px;
         width: 16px;
       }
 
@@ -830,7 +825,7 @@
         /* Post */
         .post__meta {
           display: flex;
-          justify-content: space-between;
+          justify-content: space-evenly;
           color: var(--text-200);
         }
 
@@ -839,11 +834,20 @@
           display: flex;
           align-items: center;
           gap: 3px;
+          background: var(--container-100);
+          padding: 4px 15px;
+          border-radius: 1rem;
         }
 
         .post__time {
+          font-weight: 900;
           margin-left: 4px;
           text-transform: capitalize;
+        }
+
+        .headline {
+          text-decoration: line-through;
+          color: var(--text-100);
         }
 
         .article {
@@ -1719,7 +1723,7 @@
 
         <!-- Post author and date -->
         <b:includable id="post:header">
-          <div class="post__meta">
+          <small class="post__meta">
             <div class="date">
               <b:include name="@meteor" data='{ icon: "Calendar" }' />
               <span>Fecha de publicación:</span>
@@ -1729,26 +1733,27 @@
             </div>
             <div class="reading__time">
               <b:include name="@meteor" data='{ icon: "Clock" }' /> Tiempo de
-              lectura: <span id="minutes" style="font-weight: 900;"></span>
+              lectura: <span id="minutes" style="font-weight: 900"></span>
               <div id="postContent" style="display: none">
                 <data:post.body />
               </div>
               <script>
                 (function () {
-                  const post =
-                    document.getElementById('postContent');
-                  let words = post.textContent.replace(/&lt;[^>]*&gt;?`/g, '').split(' ');
+                  const post = document.getElementById('postContent');
+                  const words = post.textContent
+                    .replace(/&lt;[^>]*&gt;?`/g, '')
+                    .split(' ');
 
-                  words = Math.round(words.length / 200);
+                  const wordCount = Math.round(words.length / 200);
 
-                  document.getElementById('minutes').textContent = words &lt;
-                  2 ? '1 min' : ' ' + words + ' min';
+                  document.getElementById('minutes').textContent =
+                    wordCount &lt;= 1 ? '1 min' : ' ' + wordCount + ' mins';
 
-                  post.remove()
+                  post.remove();
                 })();
               </script>
             </div>
-          </div>
+          </small>
         </b:includable>
 
         <b:includable id="@avatar">
