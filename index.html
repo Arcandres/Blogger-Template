@@ -15,6 +15,8 @@
   <b:attr name="xmlns:expr" value="" />
 
   <head>
+    <meta expr:content="data:view.description.escaped" name="description" />
+
     <b:if cond="data:favicon">
       <b:loop values="(data:favSizes ?: [32,96,180,192])" var="size">
         <link
@@ -31,6 +33,7 @@
         type="image/x-icon"
       />
     </b:if>
+
     <b:with
       value="data:https ? data:view.url.canonical.https : data:view.url.canonical"
       var="canonical"
@@ -39,6 +42,7 @@
       <meta expr:content="data:canonical" property="og:url" />
       <meta expr:content="data:canonical" name="twitter:url" />
     </b:with>
+
     <meta
       expr:content='data:view.isHomepage or data:view.isSingleItem ? (data:robots ?: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1") : "noindex,follow"'
       name="robots"
@@ -67,17 +71,19 @@
         </b:if>
       </b:with>
     </b:if>
+
     <meta
       expr:content='data:cardType ?: "summary_large_image"'
       name="twitter:card"
     />
+
     <meta
       expr:content="data:view.description.escaped"
       name="twitter:description"
     />
 
-    <meta expr:charset="data:blog.encoding" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta expr:charset="data:blog.encoding" />
     <meta content="dark" name="color-scheme" />
     <link href="https://blogger.googleusercontent.com" rel="preconnect" />
 
@@ -95,12 +101,6 @@
       <title><data:view.title.escaped /></title>
       <b:else />
       <data:view.title.escaped />
-    </b:if>
-
-    <b:if cond="data:view.isPost and data:view.featuredImage">
-      <link expr:href="data:view.featuredImage" rel="image_src" />
-      <meta expr:content="data:view.featuredImage" name="twitter:image" />
-      <meta expr:content="data:view.featuredImage" property="og:image" />
     </b:if>
 
     <script type="application/ld+json">
@@ -1454,9 +1454,9 @@
                 </span>
                 <h2 class="main__content-text">
                   Encuentra
-                  <strong>trucos, consejos y tutoriales Blogger</strong> que te
-                  ayudaran a crear y
-                  <strong>personalizar tu Blog al maximo</strong>.
+                  <strong>trucos, consejos y tutoriales Blogger</strong>, que te
+                  ayudarán a crear y
+                  <strong>personalizar tu Blog al máximo</strong>.
                 </h2>
               </header>
               <b:include name="post:loop" />
