@@ -199,7 +199,7 @@
 
       body {
         background: var(--bg-body-200);
-        font-family: 'Ubuntu';
+        font-family: 'Inter', 'Ubuntu', sans-serif;
         color: var(--text);
         font-size: 16px;
         margin: 0;
@@ -226,6 +226,10 @@
       a {
         color: var(--text-color);
         text-decoration: none;
+      }
+
+      strong {
+        font-weight: normal;
       }
 
       a:hover {
@@ -287,7 +291,7 @@
         position: absolute;
         width: 100%;
         z-index: 20;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
       }
 
       .nav,
@@ -300,6 +304,7 @@
         justify-content: space-between;
         max-width: var(--standard-width);
         margin: auto;
+        font-size: 0.9rem;
       }
 
       .nav__home {
@@ -519,7 +524,7 @@
     </style>
     <style class="footer-styles">
       .footer {
-        background: var(--bg-body-100);
+        background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
         color: var(--text-200);
         margin-top: 3rem;
         padding: 1rem;
@@ -547,11 +552,12 @@
 
       .footer__right {
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
         justify-content: center;
       }
 
       .footer__right ul {
+        text-align-last: left;
         font-size: 0.9rem;
       }
 
@@ -570,6 +576,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        line-height: 1.5;
       }
 
       .footer .about {
@@ -591,6 +598,7 @@
         margin-right: auto;
         border-top: 1px solid var(--text-50);
         padding-top: 2rem;
+        text-align: center;
       }
 
       @media (min-width: 900px) {
@@ -605,6 +613,10 @@
 
         .footer__right ul {
           font-size: 1rem;
+        }
+
+        .footer__bottom {
+          text-align: left;
         }
       }
     </style>
@@ -654,6 +666,7 @@
         .main__content-text {
           color: var(--text-200);
           font-size: 0.9em;
+          font-weight: normal;
         }
 
         .main__content-inner {
@@ -1106,15 +1119,15 @@
         }
 
         .pager-button {
-          border-bottom: 2px solid var(--text-100);
-          padding: 0 1rem;
+          border-bottom: 2px solid #576476;
+          padding: 0 0.5rem;
           text-align: center;
           display: block;
           max-width: 45%;
         }
 
         .pager-button p {
-          color: var(--text-100);
+          color: #576476;
           font-size: 0.8em;
           margin: 5px;
         }
@@ -1137,7 +1150,7 @@
         }
 
         .heading i {
-          color: var(--text-100);
+          color: #576476;
         }
       </style>
       <style class="comment-styles">
@@ -1915,7 +1928,7 @@
           </div>
         </b:includable>
 
-        <!-- Comentarios -->
+        <!-- Comments -->
         <b:includable id="comment:form">
           <div class="comments-editor">
             <b:if cond="data:post.allowNewComments">
