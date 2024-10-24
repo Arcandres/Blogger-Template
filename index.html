@@ -166,7 +166,7 @@
         --Blogger: #fe6602;
         --Js: #ec7;
         --CSS: #0096e6;
-        --standard-width: 1200px;
+        --standard-width: 75em;
       }
 
       *,
@@ -265,6 +265,7 @@
       /* Breadcrumbs */
       .breadcrumbs {
         color: var(--text-200);
+        font-size: 0.9rem;
       }
 
       .breadcrumb__list {
@@ -923,6 +924,10 @@
           line-height: 1.65;
         }
 
+        .article p a {
+          text-decoration: underline;
+        }
+
         @media (min-width: 820px) {
           .post__meta {
             flex-direction: row;
@@ -943,7 +948,7 @@
       <style class="toc-styles">
         /*---------------- Sidebar section ----------------*/
         .sidebar__container {
-          margin-top: 8.85rem;
+          margin-top: 8.79rem;
           margin-bottom: 3rem;
         }
 
@@ -1297,7 +1302,13 @@
         .main__section {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-          gap: 1.5rem;
+          gap: 1rem;
+          padding: 0 1rem;
+        }
+
+        .breadcrumbs {
+          font-size: 0.9rem;
+          padding: 0 1rem;
         }
 
         .post {
