@@ -527,8 +527,9 @@
       .footer {
         background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5ybn2IUg6Bv91W4B2uQVEWoh8msoJDXyZhV2DYzPENJ-9A0FJ9gJqPYDX6aN0lJ_dflwPI-TtWibddudO-IeDaT0sUPDE3pvuIt5uzAL9r1gwGn_8wfFcYCZgsHrPGFYpsrj5j2SVqOutMZH5qrSdSX-vejTLWGRG7rFnj1zL34-pmFzvX_UowzKagoQ/s0/Pattern.png);
         color: var(--text-200);
-        margin-top: 3rem;
+        margin-top: 4rem;
         padding: 1rem;
+        padding-top: 2rem;
       }
 
       .footer a {
@@ -744,7 +745,6 @@
 
         .post__title {
           font-size: 1em;
-          font-weight: normal;
           text-align: center;
           padding: 0 0.5rem;
         }
@@ -982,6 +982,19 @@
           margin: 0.8rem 0;
           border-bottom: 1px solid var(--container-100);
           padding-bottom: 0.5rem;
+        }
+
+        #toc__list h2:first-child {
+          padding-top: 0.5rem;
+        }
+
+        #toc__list h2:last-child,
+        #toc__list h3:last-child,
+        #toc__list h4:last-child,
+        #toc__list h5:last-child,
+        #toc__list h6:last-child {
+          border: none;
+          padding-bottom: 0;
         }
 
         #toc__list h2 + h3::before,
@@ -2445,7 +2458,7 @@
                   Resaltador de código
                 </a>
               </li>
-              <li>Sitemap</li>
+              <li>Mapa del sitio</li>
             </ul>
           </div>
           <div class="footer__legal">
