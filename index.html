@@ -522,6 +522,20 @@
         grid-auto-flow: row;
         grid-auto-columns: 1fr;
       }
+
+      .main__content--read {
+        text-align: right;
+        padding: 0 1rem 1rem 0;
+      }
+
+      .main__content--read .i {
+        transition-property: transform;
+        transition-duration: 0.2s;
+      }
+
+      .main__content--read .i:hover {
+        transform: rotateZ(-90deg);
+      }
     </style>
     <style class="footer-styles">
       .footer {
@@ -687,20 +701,6 @@
 
         .main__content--post-inner {
           padding: 0 1rem 1rem;
-        }
-
-        .main__content--read {
-          text-align: right;
-          padding: 0 1rem 1rem 0;
-        }
-
-        .main__content--read .i {
-          transition-property: transform;
-          transition-duration: 0.2s;
-        }
-
-        .main__content--read .i:hover {
-          transform: rotateZ(-90deg);
         }
       </style>
       <style class="new-posts">
