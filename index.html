@@ -1621,6 +1621,16 @@
                   </h2>
                   <p><data:post.snippets.short /></p>
                 </div>
+                <div class="main__content--read">
+                  <a
+                    expr:href="data:post.url"
+                    rel="nofollow"
+                    aria-label="Abrir publicación"
+                    title="Leer articulo"
+                  >
+                    <b:include name="@meteor" data='{ icon: "Arrow" }' />
+                  </a>
+                </div>
               </article>
             </b:loop>
           </section>
